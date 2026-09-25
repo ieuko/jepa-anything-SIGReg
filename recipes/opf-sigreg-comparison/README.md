@@ -39,6 +39,9 @@ the exact predictor implementation.
 The [protocol](PROTOCOL.md) was committed before the full experiment.
 The [completed 3-seed results and interpretation](../../results/opf-sigreg-comparison-2026-09-25/REPORT.md)
 are available separately from the raw metrics.
+The [pre-registered geometry/floor/external-stream follow-up](FOLLOWUP_PROTOCOL.md)
+and its [results](../../results/opf-sigreg-followup-2026-09-25/REPORT.md)
+extend the comparison without reusing the viewed test set for selection.
 
 ```bash
 PYTHONPATH=jepa-anything-core/src python3 \
