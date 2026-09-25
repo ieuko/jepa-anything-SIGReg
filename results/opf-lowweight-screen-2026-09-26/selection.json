@@ -1,0 +1,46 @@
+{
+  "criterion": "highest mean CIFAR-100 validation accuracy; smallest weight within 0.002",
+  "original_mean_validation_accuracy": 0.1489,
+  "original_validation_accuracies": [
+    0.1468,
+    0.151
+  ],
+  "protocol": "recipes/opf-cifar100-floor/LOW_WEIGHT_TRANSFER_PROTOCOL.md",
+  "selected_minus_original_validation_accuracy": -0.01620000000000002,
+  "selected_weight": 0.0001,
+  "svhn_scores_viewed_before_selection": false,
+  "weights": [
+    {
+      "mean_validation_accuracy": 0.13269999999999998,
+      "validation_accuracies": [
+        0.1304,
+        0.135
+      ],
+      "weight": 0.0001
+    },
+    {
+      "mean_validation_accuracy": 0.12010000000000001,
+      "validation_accuracies": [
+        0.1218,
+        0.1184
+      ],
+      "weight": 0.0005
+    },
+    {
+      "mean_validation_accuracy": 0.12290000000000001,
+      "validation_accuracies": [
+        0.1222,
+        0.1236
+      ],
+      "weight": 0.001
+    },
+    {
+      "mean_validation_accuracy": 0.1099,
+      "validation_accuracies": [
+        0.1088,
+        0.111
+      ],
+      "weight": 0.005
+    }
+  ]
+}

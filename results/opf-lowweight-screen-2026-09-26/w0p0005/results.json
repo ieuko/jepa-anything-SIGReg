@@ -1,0 +1,210 @@
+{
+  "configuration": {
+    "data_dir": "/workspace/datasets",
+    "dataset": "cifar100",
+    "device": "cuda",
+    "download_url": "https://data.brainchip.com/dataset-mirror/cifar100/cifar-100-binary.tar.gz",
+    "epochs": 16,
+    "num_classes": 100,
+    "output_dir": "/workspace/opf-lowweight-screen-2026-09-26/w0p0005",
+    "seeds": "0,1",
+    "sigreg_weight": 0.0005,
+    "smoke_data": false,
+    "validation_only": true,
+    "variants": "plus"
+  },
+  "dataset": {
+    "archive_md5": "03b5dce01913d631647c71ecec9e9cb8",
+    "download_url": "https://data.brainchip.com/dataset-mirror/cifar100/cifar-100-binary.tar.gz",
+    "labels_used_for_ssl": false,
+    "test_count": 10000,
+    "test_probe_evaluated": false,
+    "train_count": 45000,
+    "validation_count": 5000,
+    "validation_split_seed": null
+  },
+  "environment": {
+    "device": "NVIDIA RTX PRO 6000 Blackwell Server Edition MIG 1g.24gb",
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128"
+  },
+  "history": {
+    "plus/seed-0": [
+      {
+        "epoch": 1.0,
+        "mean_loss": 0.017748812213540077
+      },
+      {
+        "epoch": 2.0,
+        "mean_loss": 0.02034703455865383
+      },
+      {
+        "epoch": 3.0,
+        "mean_loss": 0.044122856110334396
+      },
+      {
+        "epoch": 4.0,
+        "mean_loss": 0.06943342834711075
+      },
+      {
+        "epoch": 5.0,
+        "mean_loss": 0.08331608027219772
+      },
+      {
+        "epoch": 6.0,
+        "mean_loss": 0.08965480327606201
+      },
+      {
+        "epoch": 7.0,
+        "mean_loss": 0.0924529954791069
+      },
+      {
+        "epoch": 8.0,
+        "mean_loss": 0.09300478547811508
+      },
+      {
+        "epoch": 9.0,
+        "mean_loss": 0.09302074462175369
+      },
+      {
+        "epoch": 10.0,
+        "mean_loss": 0.09475640952587128
+      },
+      {
+        "epoch": 11.0,
+        "mean_loss": 0.09552178531885147
+      },
+      {
+        "epoch": 12.0,
+        "mean_loss": 0.09920570254325867
+      },
+      {
+        "epoch": 13.0,
+        "mean_loss": 0.1000124141573906
+      },
+      {
+        "epoch": 14.0,
+        "mean_loss": 0.10029479116201401
+      },
+      {
+        "epoch": 15.0,
+        "mean_loss": 0.10186225175857544
+      },
+      {
+        "epoch": 16.0,
+        "mean_loss": 0.10139387845993042
+      }
+    ],
+    "plus/seed-1": [
+      {
+        "epoch": 1.0,
+        "mean_loss": 0.020454538986086845
+      },
+      {
+        "epoch": 2.0,
+        "mean_loss": 0.021255439147353172
+      },
+      {
+        "epoch": 3.0,
+        "mean_loss": 0.045410532504320145
+      },
+      {
+        "epoch": 4.0,
+        "mean_loss": 0.06853790581226349
+      },
+      {
+        "epoch": 5.0,
+        "mean_loss": 0.08410345017910004
+      },
+      {
+        "epoch": 6.0,
+        "mean_loss": 0.09370145201683044
+      },
+      {
+        "epoch": 7.0,
+        "mean_loss": 0.10005943477153778
+      },
+      {
+        "epoch": 8.0,
+        "mean_loss": 0.10240589827299118
+      },
+      {
+        "epoch": 9.0,
+        "mean_loss": 0.10333196818828583
+      },
+      {
+        "epoch": 10.0,
+        "mean_loss": 0.10544206202030182
+      },
+      {
+        "epoch": 11.0,
+        "mean_loss": 0.1043660119175911
+      },
+      {
+        "epoch": 12.0,
+        "mean_loss": 0.10499265044927597
+      },
+      {
+        "epoch": 13.0,
+        "mean_loss": 0.10458515584468842
+      },
+      {
+        "epoch": 14.0,
+        "mean_loss": 0.10646113753318787
+      },
+      {
+        "epoch": 15.0,
+        "mean_loss": 0.10581056773662567
+      },
+      {
+        "epoch": 16.0,
+        "mean_loss": 0.10766341537237167
+      }
+    ]
+  },
+  "protocol": "recipes/opf-cifar100-floor/PROTOCOL.md",
+  "results": [
+    {
+      "encoder_floor_active_fraction": 0.0024857954122126102,
+      "encoder_floor_raw_mean": 4.653412361221854e-06,
+      "factor_floor_active_fraction": 0.020951705053448677,
+      "factor_floor_raw_mean": 8.253941632574424e-05,
+      "floor_weight": 0.1,
+      "gram_rmse": 0.012695127297993948,
+      "gram_weight": 0.05,
+      "seed": 0,
+      "sigreg_weight": 0.0005,
+      "train_seconds": 24.10906080098357,
+      "trainable_parameters": 540928,
+      "updates": 2816,
+      "validation_collapsed_coordinate_fraction": 0.0,
+      "validation_covariance_identity_rmse": 0.45528523217516176,
+      "validation_effective_rank": 8.924720618768745,
+      "validation_mean_coordinate_std": 1.1233418105514472,
+      "validation_min_coordinate_std": 0.4527651336390854,
+      "validation_probe_accuracy": 0.1218,
+      "variant": "plus"
+    },
+    {
+      "encoder_floor_active_fraction": 0.0028409091755747795,
+      "encoder_floor_raw_mean": 3.8135854083520826e-06,
+      "factor_floor_active_fraction": 0.024502841755747795,
+      "factor_floor_raw_mean": 8.276027801912278e-05,
+      "floor_weight": 0.1,
+      "gram_rmse": 0.013242079160847488,
+      "gram_weight": 0.05,
+      "seed": 1,
+      "sigreg_weight": 0.0005,
+      "train_seconds": 26.95460648194421,
+      "trainable_parameters": 540928,
+      "updates": 2816,
+      "validation_collapsed_coordinate_fraction": 0.0,
+      "validation_covariance_identity_rmse": 0.475143273085782,
+      "validation_effective_rank": 8.640928413544223,
+      "validation_mean_coordinate_std": 1.1225606465583886,
+      "validation_min_coordinate_std": 0.5359220648857312,
+      "validation_probe_accuracy": 0.1184,
+      "variant": "plus"
+    }
+  ]
+}

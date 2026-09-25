@@ -1,0 +1,35 @@
+plus seed=0 epoch=1 loss=0.03335
+plus seed=0 epoch=2 loss=0.02912
+plus seed=0 epoch=3 loss=0.05348
+plus seed=0 epoch=4 loss=0.07986
+plus seed=0 epoch=5 loss=0.09349
+plus seed=0 epoch=6 loss=0.10013
+plus seed=0 epoch=7 loss=0.10399
+plus seed=0 epoch=8 loss=0.10703
+plus seed=0 epoch=9 loss=0.10969
+plus seed=0 epoch=10 loss=0.11278
+plus seed=0 epoch=11 loss=0.11500
+plus seed=0 epoch=12 loss=0.11816
+plus seed=0 epoch=13 loss=0.11983
+plus seed=0 epoch=14 loss=0.12035
+plus seed=0 epoch=15 loss=0.12157
+plus seed=0 epoch=16 loss=0.12090
+{"encoder_floor_active_fraction": 0.0017755682347342372, "encoder_floor_raw_mean": 5.022038749302737e-06, "factor_floor_active_fraction": 0.02130681835114956, "factor_floor_raw_mean": 7.891789573477581e-05, "floor_weight": 0.1, "gram_rmse": 0.015145248995389283, "gram_weight": 0.05, "seed": 0, "sigreg_weight": 0.001, "train_seconds": 25.37939222494606, "trainable_parameters": 540928, "updates": 2816, "validation_collapsed_coordinate_fraction": 0.0, "validation_covariance_identity_rmse": 0.48851176407738617, "validation_effective_rank": 9.27417545097255, "validation_mean_coordinate_std": 1.1710097411006393, "validation_min_coordinate_std": 0.5723629559163874, "validation_probe_accuracy": 0.1222, "variant": "plus"}
+plus seed=1 epoch=1 loss=0.03846
+plus seed=1 epoch=2 loss=0.03010
+plus seed=1 epoch=3 loss=0.05640
+plus seed=1 epoch=4 loss=0.08204
+plus seed=1 epoch=5 loss=0.09965
+plus seed=1 epoch=6 loss=0.10918
+plus seed=1 epoch=7 loss=0.11428
+plus seed=1 epoch=8 loss=0.11523
+plus seed=1 epoch=9 loss=0.11556
+plus seed=1 epoch=10 loss=0.11736
+plus seed=1 epoch=11 loss=0.11684
+plus seed=1 epoch=12 loss=0.11858
+plus seed=1 epoch=13 loss=0.11932
+plus seed=1 epoch=14 loss=0.12061
+plus seed=1 epoch=15 loss=0.11910
+plus seed=1 epoch=16 loss=0.12066
+{"encoder_floor_active_fraction": 0.0021306818816810846, "encoder_floor_raw_mean": 3.988412117905682e-06, "factor_floor_active_fraction": 0.024147728458046913, "factor_floor_raw_mean": 7.917723996797577e-05, "floor_weight": 0.1, "gram_rmse": 0.014569701015601143, "gram_weight": 0.05, "seed": 1, "sigreg_weight": 0.001, "train_seconds": 26.149717638036236, "trainable_parameters": 540928, "updates": 2816, "validation_collapsed_coordinate_fraction": 0.0, "validation_covariance_identity_rmse": 0.49771329384481355, "validation_effective_rank": 8.761040637008165, "validation_mean_coordinate_std": 1.145215906132686, "validation_min_coordinate_std": 0.6395028628868918, "validation_probe_accuracy": 0.1236, "variant": "plus"}
+WROTE /workspace/opf-lowweight-screen-2026-09-26/w0p001/results.json
