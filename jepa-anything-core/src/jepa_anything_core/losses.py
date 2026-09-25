@@ -10,7 +10,6 @@ from typing import Literal
 import torch
 from torch import Tensor, nn
 
-
 Reduction = Literal["mean", "sum", "none"]
 
 
@@ -604,6 +603,7 @@ class JEPAAnythingLoss:
     orthogonality: Tensor
     factor_activity: Tensor
     encoder_variance: Tensor
+    sigreg: Tensor
 
 
 def jepa_anything_objective(
@@ -616,11 +616,14 @@ def jepa_anything_objective(
     orthogonality_weight: float = 1.0,
     factor_activity_weight: float = 1.0,
     encoder_variance_weight: float = 1.0,
+    sigreg_weight: float = 0.0,
+    sigreg: Callable[[Tensor], Tensor] | None = None,
+    sigreg_embeddings: Tensor | None = None,
     factor_min_std: float = 0.1,
     encoder_min_std: float = 0.1,
     eps: float = 1e-6,
 ) -> JEPAAnythingLoss:
-    """Compose the four deterministic JEPA Anything loss terms.
+    """Compose the JEPA Anything loss terms, optionally including SIGReg.
 
     This pure function intentionally performs no optimizer or EMA update.  It is
     suitable for generated task skeletons while keeping training lifecycle and
@@ -634,6 +637,7 @@ def jepa_anything_objective(
         "orthogonality_weight": orthogonality_weight,
         "factor_activity_weight": factor_activity_weight,
         "encoder_variance_weight": encoder_variance_weight,
+        "sigreg_weight": sigreg_weight,
     }
     invalid = [name for name, value in weights.items() if not math.isfinite(value) or value < 0]
     if invalid:
@@ -668,6 +672,13 @@ def jepa_anything_objective(
         "analysis_basis": analysis_basis,
         "context_states": context_states,
     }
+    if sigreg_embeddings is not None:
+        if sigreg_embeddings.ndim < 2 or sigreg_embeddings.shape[-1] != state_dim:
+            raise ValueError(
+                "sigreg_embeddings must end in the analysis basis state dimension "
+                f"{state_dim}, got {tuple(sigreg_embeddings.shape)}"
+            )
+        objective_tensors["sigreg_embeddings"] = sigreg_embeddings
     wrong_devices = [
         name
         for name, tensor in objective_tensors.items()
@@ -687,11 +698,27 @@ def jepa_anything_objective(
         min_std=encoder_min_std,
         eps=eps,
     )
+    if sigreg_weight > 0:
+        if sigreg is None:
+            raise ValueError("sigreg must be provided when sigreg_weight is positive")
+        embeddings = (
+            target_factors.reshape(-1, state_dim)
+            if sigreg_embeddings is None
+            else sigreg_embeddings.reshape(-1, state_dim)
+        )
+        sigreg_value = sigreg(embeddings)
+        if sigreg_value.numel() != 1:
+            raise ValueError("sigreg must return a scalar tensor")
+        sigreg_value = sigreg_value.reshape(())
+    else:
+        # Avoid advancing a stateful regularizer when its weight is disabled.
+        sigreg_value = predicted_factors.sum() * 0.0
     total = (
         prediction
         + orthogonality_weight * orthogonality
         + factor_activity_weight * factor_activity
         + encoder_variance_weight * encoder_variance
+        + sigreg_weight * sigreg_value
     )
     return JEPAAnythingLoss(
         total=total,
@@ -699,4 +726,5 @@ def jepa_anything_objective(
         orthogonality=orthogonality,
         factor_activity=factor_activity,
         encoder_variance=encoder_variance,
+        sigreg=sigreg_value,
     )

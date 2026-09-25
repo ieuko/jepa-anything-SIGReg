@@ -12,6 +12,10 @@ action-conditioned linear dynamical system. Its context and target are drawn
 from the same trajectory, all target offsets are strictly in the future, and
 the proposed OPF state uses `d=4`, `K=2`, and `r=2` so that `K*r=d`.
 
+[`sigreg-synthetic-dynamics/`](sigreg-synthetic-dynamics/) is a trainable,
+controlled collapse-prevention ablation comparing prediction-only, the existing
+coordinate-variance floors, and SIGReg across matched seeds.
+
 Run the dependency-free smoke audit from the repository root:
 
 ```bash

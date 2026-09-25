@@ -1,0 +1,33 @@
+{
+  "date_utc": "2026-09-25",
+  "runpod": {
+    "cli_version": "2.14.0-dd55bcf",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "cloud_type": "SECURE",
+    "data_center": "EU-RO-1",
+    "price_per_hour_usd": 0.57,
+    "balance_before_usd": 46.0478759606,
+    "balance_after_usd": 46.0190725958,
+    "measured_cost_usd": 0.0288033648,
+    "post_run_spend_per_hour_usd": 0,
+    "pod_deleted": true
+  },
+  "software": {
+    "python": "3.12.3",
+    "pytorch": "2.8.0+cu128",
+    "cuda": "12.8"
+  },
+  "experiment": {
+    "variants": [
+      "prediction-only",
+      "variance",
+      "sigreg"
+    ],
+    "seeds": [0, 1, 2],
+    "steps": 1500,
+    "batch_size": 1024,
+    "evaluation_samples": 4096,
+    "sigreg_slices": 256,
+    "total_runs": 9
+  }
+}

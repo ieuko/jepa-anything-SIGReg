@@ -6,6 +6,7 @@ import torch
 from jepa_anything_core import (
     OnlineVarianceLoss,
     OnlineVarianceTracker,
+    SIGReg,
     encoder_variance_loss,
     factor_activity_loss,
     factor_coordinate_standard_deviation,
@@ -287,8 +288,56 @@ def test_factor_prediction_and_composite_objective_are_differentiable() -> None:
         objective.prediction
         + 0.5 * objective.orthogonality
         + 0.25 * objective.factor_activity
-        + 0.25 * objective.encoder_variance,
+        + 0.25 * objective.encoder_variance
+        + objective.sigreg,
     )
+
+
+def test_composite_objective_can_replace_activity_terms_with_sigreg() -> None:
+    predicted = torch.zeros(32, 2, 1, requires_grad=True)
+    target = torch.randn(32, 2, 1, requires_grad=True)
+    basis = torch.eye(2).reshape(2, 1, 2)
+    context = torch.randn(32, 2, requires_grad=True)
+    regularizer = SIGReg(num_slices=16, seed=7)
+
+    objective = jepa_anything_objective(
+        predicted,
+        target,
+        basis,
+        context,
+        factor_activity_weight=0.0,
+        encoder_variance_weight=0.0,
+        sigreg_weight=0.02,
+        sigreg=regularizer,
+        sigreg_embeddings=context,
+    )
+    objective.total.backward()
+
+    torch.testing.assert_close(
+        objective.total,
+        objective.prediction + objective.orthogonality + 0.02 * objective.sigreg,
+    )
+    assert regularizer.step.item() == 1
+    assert context.grad is not None
+
+
+def test_disabled_sigreg_does_not_advance_projection_sequence() -> None:
+    predicted = torch.zeros(4, 2, 1)
+    target = torch.ones(4, 2, 1)
+    basis = torch.eye(2).reshape(2, 1, 2)
+    context = torch.randn(4, 2)
+    regularizer = SIGReg(num_slices=4)
+
+    objective = jepa_anything_objective(
+        predicted,
+        target,
+        basis,
+        context,
+        sigreg=regularizer,
+    )
+
+    assert objective.sigreg.item() == 0.0
+    assert regularizer.step.item() == 0
 
 
 def test_factor_prediction_accepts_a_single_unbatched_factor_state() -> None:

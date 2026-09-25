@@ -34,7 +34,11 @@ This repository provides the reusable core, task-design tools, and an executable
 | Task design | Validate a task specification and generate an implementation scaffold | [Design contract](jepa-anything-skill/references/config-contract.md) |
 | Example | Follow a controlled dynamical system from specification to structural checks | [Synthetic linear dynamics](recipes/synthetic-linear-dynamics/README.md) |
 | Architecture | Understand the relationship between adapters, the predictive core, and downstream use | [Architecture guide](docs/architecture.md) |
+| SIGReg | Prevent representation collapse with sliced Gaussian regularization | [SIGReg integration](docs/sigreg.md) |
 | Artifact metadata | Describe and verify model artifact provenance | [Manifest guide](checkpoints/README.md) |
+
+The matched 3-seed Runpod ablation and raw metrics are in
+[`results/runpod-2026-09-25`](results/runpod-2026-09-25/REPORT.md).
 
 ## Quick start
 

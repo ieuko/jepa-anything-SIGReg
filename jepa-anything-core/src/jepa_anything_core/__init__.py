@@ -55,8 +55,9 @@ from .opf import (
     transpose_synthesize_state,
     validate_factorization,
 )
+from .sigreg import SIGReg, SIGRegReduction, epps_pulley_statistic
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 __all__ = [
     "BasisGeometryReport",
@@ -72,6 +73,8 @@ __all__ = [
     "OrthogonalFactorProjection",
     "OrthogonalityMode",
     "RoundTripReport",
+    "SIGReg",
+    "SIGRegReduction",
     "StandardJEPABaseline",
     "UnconstrainedMultiHeadJEPABaseline",
     "UnconstrainedMultiHeadPredictor",
@@ -87,6 +90,7 @@ __all__ = [
     "decompose_state",
     "default_geometry_tolerance",
     "ema_update",
+    "epps_pulley_statistic",
     "encoder_variance_loss",
     "factor_activity_loss",
     "factor_coordinate_standard_deviation",

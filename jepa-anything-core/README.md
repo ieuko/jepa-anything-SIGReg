@@ -27,6 +27,8 @@ separate experimental evidence.
 - Projector-Gram orthogonality, per-coordinate factor activity, and
   token-mask-aware online-encoder variance losses.
 - Pure factor regression and composite objective construction;
+- LeJEPA-style SIGReg with deterministic random slices, mixed-precision-safe
+  Epps--Pulley statistics, and distributed characteristic-function reduction;
   optimizer and EMA scheduling remain explicit responsibilities of generated
   downstream execution code.
 - Statistical factor decorrelation and checkpointable Welford variance tracking
