@@ -89,6 +89,21 @@ def _read_array(
     return np.loadtxt(io.BytesIO(bundle.read(f"UCI HAR Dataset/{path}")), dtype=dtype)
 
 
+def _used_files_sha256(bundle: zipfile.ZipFile) -> str:
+    digest = hashlib.sha256()
+    for split in ("train", "test"):
+        paths = [
+            f"{split}/Inertial Signals/{channel}_{split}.txt"
+            for channel in CHANNELS
+        ] + [f"{split}/y_{split}.txt", f"{split}/subject_{split}.txt"]
+        for relative in paths:
+            name = f"UCI HAR Dataset/{relative}"
+            digest.update(name.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(bundle.read(name))
+    return digest.hexdigest()
+
+
 def _read_split(bundle: zipfile.ZipFile, split: str) -> tuple[Tensor, Tensor, Tensor]:
     components = [
         _read_array(
@@ -123,10 +138,14 @@ def load_data(
     device: torch.device,
 ) -> tuple[dict[str, dict[str, Tensor]], dict[str, Any]]:
     archive = _archive(data_dir, download_url)
-    # UCI distributes an outer archive containing the original dataset ZIP.
+    # UCI's current endpoint wraps the original ZIP; older mirrors serve it directly.
     with zipfile.ZipFile(archive) as outer:
-        inner_bytes = outer.read("UCI HAR Dataset.zip")
-    with zipfile.ZipFile(io.BytesIO(inner_bytes)) as bundle:
+        inner_bytes = (
+            outer.read("UCI HAR Dataset.zip")
+            if "UCI HAR Dataset.zip" in outer.namelist() else None
+        )
+    with zipfile.ZipFile(io.BytesIO(inner_bytes) if inner_bytes is not None else archive) as bundle:
+        used_files_hash = _used_files_sha256(bundle)
         train_x, train_y, train_subjects = _read_split(bundle, "train")
         test_x, test_y, test_subjects = _read_split(bundle, "test")
     train_subject_ids = sorted(int(value) for value in train_subjects.unique())
@@ -152,7 +171,10 @@ def load_data(
         raise RuntimeError("empty UCI HAR partition")
     metadata: dict[str, Any] = {
         "archive_sha256": _sha256(archive),
-        "inner_archive_sha256": hashlib.sha256(inner_bytes).hexdigest(),
+        "inner_archive_sha256": (
+            hashlib.sha256(inner_bytes).hexdigest() if inner_bytes is not None else None
+        ),
+        "used_files_sha256": used_files_hash,
         "archive_bytes": archive.stat().st_size,
         "download_url": download_url,
         "train_subject_ids": [
