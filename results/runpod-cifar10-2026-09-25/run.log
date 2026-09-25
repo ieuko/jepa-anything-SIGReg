@@ -1,0 +1,85 @@
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.12499968188408132, "effective_rank": 3.175870947195287, "linear_probe_accuracy": 0.3454, "mean_coordinate_std": 0.001440367799296877, "min_coordinate_std": 0.0005252106098151484, "seed": 0, "train_seconds": 8.037872612476349e-05, "variant": "random"}
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.1249995985570447, "effective_rank": 2.8950887033453543, "linear_probe_accuracy": 0.3538, "mean_coordinate_std": 0.0016336888661924584, "min_coordinate_std": 0.0006208739614181687, "seed": 1, "train_seconds": 3.864988684654236e-05, "variant": "random"}
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.12499976192594967, "effective_rank": 3.2239394661431473, "linear_probe_accuracy": 0.3483, "mean_coordinate_std": 0.0012004427112546135, "min_coordinate_std": 0.00039225313057478423, "seed": 2, "train_seconds": 3.664940595626831e-05, "variant": "random"}
+prediction-only seed=0 epoch=1 loss=0.00004
+prediction-only seed=0 epoch=2 loss=0.00000
+prediction-only seed=0 epoch=3 loss=0.00000
+prediction-only seed=0 epoch=4 loss=0.00000
+prediction-only seed=0 epoch=5 loss=0.00000
+prediction-only seed=0 epoch=6 loss=0.00000
+prediction-only seed=0 epoch=7 loss=0.00000
+prediction-only seed=0 epoch=8 loss=0.00000
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.12499999816200641, "effective_rank": 46.27982447361149, "linear_probe_accuracy": 0.2331, "mean_coordinate_std": 0.00012066203399920569, "min_coordinate_std": 0.00010360975771667475, "seed": 0, "train_seconds": 6.654777837917209, "variant": "prediction-only"}
+prediction-only seed=1 epoch=1 loss=0.00002
+prediction-only seed=1 epoch=2 loss=0.00000
+prediction-only seed=1 epoch=3 loss=0.00000
+prediction-only seed=1 epoch=4 loss=0.00000
+prediction-only seed=1 epoch=5 loss=0.00000
+prediction-only seed=1 epoch=6 loss=0.00000
+prediction-only seed=1 epoch=7 loss=0.00000
+prediction-only seed=1 epoch=8 loss=0.00000
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.1249999985381934, "effective_rank": 50.59071225937561, "linear_probe_accuracy": 0.2296, "mean_coordinate_std": 0.00010797867552388485, "min_coordinate_std": 9.184329219206656e-05, "seed": 1, "train_seconds": 6.424398850649595, "variant": "prediction-only"}
+prediction-only seed=2 epoch=1 loss=0.00004
+prediction-only seed=2 epoch=2 loss=0.00000
+prediction-only seed=2 epoch=3 loss=0.00000
+prediction-only seed=2 epoch=4 loss=0.00000
+prediction-only seed=2 epoch=5 loss=0.00000
+prediction-only seed=2 epoch=6 loss=0.00000
+prediction-only seed=2 epoch=7 loss=0.00000
+prediction-only seed=2 epoch=8 loss=0.00000
+{"collapsed_coordinate_fraction": 1.0, "covariance_identity_rmse": 0.12499999812563709, "effective_rank": 47.94136293971453, "linear_probe_accuracy": 0.2591, "mean_coordinate_std": 0.00012193144695324782, "min_coordinate_std": 0.00010433810464307172, "seed": 2, "train_seconds": 6.414563534781337, "variant": "prediction-only"}
+variance seed=0 epoch=1 loss=0.57339
+variance seed=0 epoch=2 loss=0.06760
+variance seed=0 epoch=3 loss=0.08263
+variance seed=0 epoch=4 loss=0.06905
+variance seed=0 epoch=5 loss=0.04362
+variance seed=0 epoch=6 loss=0.05212
+variance seed=0 epoch=7 loss=0.04055
+variance seed=0 epoch=8 loss=0.04418
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 1.5195018673831433, "effective_rank": 1.001833973173069, "linear_probe_accuracy": 0.2442, "mean_coordinate_std": 1.235842188563098, "min_coordinate_std": 1.1035667335238817, "seed": 0, "train_seconds": 10.787601836025715, "variant": "variance"}
+variance seed=1 epoch=1 loss=0.54112
+variance seed=1 epoch=2 loss=0.07217
+variance seed=1 epoch=3 loss=0.06212
+variance seed=1 epoch=4 loss=0.05854
+variance seed=1 epoch=5 loss=0.04848
+variance seed=1 epoch=6 loss=0.08740
+variance seed=1 epoch=7 loss=0.04466
+variance seed=1 epoch=8 loss=0.04524
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 1.4532109692791229, "effective_rank": 1.0028156034601108, "linear_probe_accuracy": 0.2428, "mean_coordinate_std": 1.2089564455912756, "min_coordinate_std": 1.1442895007708112, "seed": 1, "train_seconds": 10.660655407235026, "variant": "variance"}
+variance seed=2 epoch=1 loss=0.52513
+variance seed=2 epoch=2 loss=0.06297
+variance seed=2 epoch=3 loss=0.05892
+variance seed=2 epoch=4 loss=0.05517
+variance seed=2 epoch=5 loss=0.11058
+variance seed=2 epoch=6 loss=0.04447
+variance seed=2 epoch=7 loss=0.04488
+variance seed=2 epoch=8 loss=0.06607
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 6.356583313412346, "effective_rank": 1.0046997845057304, "linear_probe_accuracy": 0.2266, "mean_coordinate_std": 2.5197540666313922, "min_coordinate_std": 2.2514881567130103, "seed": 2, "train_seconds": 10.55328256636858, "variant": "variance"}
+sigreg seed=0 epoch=1 loss=0.51642
+sigreg seed=0 epoch=2 loss=0.34047
+sigreg seed=0 epoch=3 loss=0.29432
+sigreg seed=0 epoch=4 loss=0.26312
+sigreg seed=0 epoch=5 loss=0.23387
+sigreg seed=0 epoch=6 loss=0.21089
+sigreg seed=0 epoch=7 loss=0.19702
+sigreg seed=0 epoch=8 loss=0.19014
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 0.4958465512594534, "effective_rank": 4.851072021055594, "linear_probe_accuracy": 0.3365, "mean_coordinate_std": 0.9854634547105054, "min_coordinate_std": 0.4636513658300002, "seed": 0, "train_seconds": 12.678835287690163, "variant": "sigreg"}
+sigreg seed=1 epoch=1 loss=0.51232
+sigreg seed=1 epoch=2 loss=0.33780
+sigreg seed=1 epoch=3 loss=0.29156
+sigreg seed=1 epoch=4 loss=0.24968
+sigreg seed=1 epoch=5 loss=0.22306
+sigreg seed=1 epoch=6 loss=0.21225
+sigreg seed=1 epoch=7 loss=0.19665
+sigreg seed=1 epoch=8 loss=0.18990
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 0.5155428325666026, "effective_rank": 4.976329053130764, "linear_probe_accuracy": 0.3337, "mean_coordinate_std": 1.0366227048318464, "min_coordinate_std": 0.4164916649222173, "seed": 1, "train_seconds": 12.659539444372058, "variant": "sigreg"}
+sigreg seed=2 epoch=1 loss=0.51362
+sigreg seed=2 epoch=2 loss=0.33506
+sigreg seed=2 epoch=3 loss=0.28483
+sigreg seed=2 epoch=4 loss=0.25421
+sigreg seed=2 epoch=5 loss=0.23986
+sigreg seed=2 epoch=6 loss=0.21582
+sigreg seed=2 epoch=7 loss=0.19642
+sigreg seed=2 epoch=8 loss=0.19090
+{"collapsed_coordinate_fraction": 0.0, "covariance_identity_rmse": 0.5315905334908325, "effective_rank": 4.971997246148281, "linear_probe_accuracy": 0.3506, "mean_coordinate_std": 1.0362837213457454, "min_coordinate_std": 0.45334032043260375, "seed": 2, "train_seconds": 12.541358508169651, "variant": "sigreg"}
+WROTE results/runpod-cifar10-2026-09-25/results.json

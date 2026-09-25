@@ -1,0 +1,36 @@
+{
+  "date_utc": "2026-09-25",
+  "training_code_commit": "1eed266",
+  "runpod": {
+    "cli_version": "2.14.0-dd55bcf",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "cloud_type": "SECURE",
+    "data_center": "EU-RO-1",
+    "price_per_hour_usd": 0.57,
+    "balance_before_usd": 45.8881071921,
+    "balance_after_usd": 45.5388810542,
+    "measured_cost_usd": 0.3492261379,
+    "post_run_spend_per_hour_usd": 0,
+    "pod_deleted": true
+  },
+  "dataset": {
+    "name": "CIFAR-10 binary",
+    "download_url": "https://data.brainchip.com/dataset-mirror/cifar10/cifar-10-binary.tar.gz",
+    "publisher_url": "https://cave.cs.toronto.edu/kriz/cifar.html",
+    "publisher_md5": "c32a1d4ab5d03f1284b67883e8d87530",
+    "train_images": 50000,
+    "test_images": 10000
+  },
+  "experiment": {
+    "image_size": 32,
+    "state_dim": 64,
+    "num_factors": 8,
+    "sigreg_slices": 128,
+    "batch_size": 256,
+    "seeds": [0, 1, 2],
+    "epoch_counts": [8, 32],
+    "variance_weight": 4.0,
+    "sigreg_weights_32_epochs": [0.001, 0.005, 0.02, 0.05, 0.1],
+    "total_runs": 30
+  }
+}

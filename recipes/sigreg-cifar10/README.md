@@ -34,3 +34,15 @@ controlled transfer check, not a claim of competitive CIFAR-10 accuracy. It
 does not use target-network EMA, contrastive negatives, or a large pretrained
 backbone. Geometry and linear-probe accuracy should be read together because
 effective rank is insensitive to the absolute scale of a collapsed embedding.
+
+The checked-in [Runpod report](../../results/runpod-cifar10-2026-09-25/REPORT.md)
+also includes 32-epoch runs and a five-weight SIGReg sweep. The figure can be
+regenerated with Matplotlib:
+
+```bash
+python recipes/sigreg-cifar10/plot.py \
+  --result-dir results/runpod-cifar10-2026-09-25
+```
+
+The sweep is exploratory because test-set probe scores were inspected while
+extending it.
