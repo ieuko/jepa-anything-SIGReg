@@ -49,6 +49,13 @@ The direct public-core OPF objective versus SIGReg comparison is in
 [`results/opf-sigreg-comparison-2026-09-25`](results/opf-sigreg-comparison-2026-09-25/REPORT.md).
 Its geometry, active-floor, and external-stream follow-up is in
 [`results/opf-sigreg-followup-2026-09-25`](results/opf-sigreg-followup-2026-09-25/REPORT.md).
+The real-sequence OPF comparison on UCI HAR is in
+[`results/opf-uci-har-2026-09-26`](results/opf-uci-har-2026-09-26/REPORT.md):
+the source 0.01 floors were inactive throughout, so replacement was untested
+there. The complementary, exploratory CIFAR-100 image comparison is in
+[`results/opf-cifar100-floor-2026-09-26`](results/opf-cifar100-floor-2026-09-26/REPORT.md):
+its floors activated sparsely, but fixed-weight SIGReg underperformed the
+original OPF objective.
 
 ## Quick start
 
