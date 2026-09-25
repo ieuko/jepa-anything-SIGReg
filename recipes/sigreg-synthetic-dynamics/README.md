@@ -33,3 +33,22 @@ The output directory contains `summary.json`, `metrics.csv`, and a generated
 `REPORT.md`. The linear probe sees simulator state only during evaluation; it is
 not part of training. Consequently this recipe is a controlled mechanism test,
 not a domain benchmark.
+
+## Follow-up sweep
+
+`sweep.py` runs matched regularization-weight sweeps with Gaussian and bimodal
+simulator states. The bimodal coordinates are standardized sign mixtures with
+0.15 Gaussian jitter; they have unit variance but are far from Gaussian. The
+additional `predicted_next_state_r2` metric applies a probe fitted on current
+state embeddings to the predictor output and scores recovery of the next true
+state. This checks dynamics quality without rewarding a tiny embedding scale.
+
+```bash
+python recipes/sigreg-synthetic-dynamics/sweep.py \
+  --device cuda --output-dir results/runpod-followup-2026-09-25
+```
+
+The sweep compares three variance weights and five SIGReg weights, each with
+three seeds, for both latent distributions. Condition-level outputs are kept
+under the output directory, alongside a combined `metrics.csv`, `summary.json`,
+and `REPORT.md`.

@@ -38,6 +38,7 @@ class RunMetrics:
     covariance_condition_number: float
     effective_rank: float
     linear_probe_r2: float
+    predicted_next_state_r2: float
     sigreg_statistic: float
     train_seconds: float
 
@@ -45,7 +46,16 @@ class RunMetrics:
 class SyntheticWorld:
     """Stationary latent dynamics observed through a fixed nonlinear mixing."""
 
-    def __init__(self, state_dim: int, observation_dim: int, device: torch.device) -> None:
+    def __init__(
+        self,
+        state_dim: int,
+        observation_dim: int,
+        device: torch.device,
+        state_distribution: str = "gaussian",
+    ) -> None:
+        if state_distribution not in {"gaussian", "bimodal"}:
+            raise ValueError(f"unknown state distribution: {state_distribution}")
+        self.state_distribution = state_distribution
         generator = torch.Generator(device=device).manual_seed(20260925)
         blocks: list[Tensor] = []
         for index in range(state_dim // 2):
@@ -92,12 +102,17 @@ class SyntheticWorld:
         count: int,
         generator: torch.Generator,
     ) -> tuple[Tensor, Tensor, Tensor, Tensor]:
-        state = torch.randn(
-            count,
-            self.dynamics.shape[0],
-            generator=generator,
-            device=self.dynamics.device,
-        )
+        shape = (count, self.dynamics.shape[0])
+        if self.state_distribution == "gaussian":
+            state = torch.randn(shape, generator=generator, device=self.dynamics.device)
+        else:
+            signs = torch.randint(
+                0, 2, shape, generator=generator, device=self.dynamics.device
+            ).float().mul_(2).sub_(1)
+            jitter = 0.15 * torch.randn(
+                shape, generator=generator, device=self.dynamics.device
+            )
+            state = (signs + jitter) / math.sqrt(1.0 + 0.15**2)
         transition_noise = 0.08 * torch.randn(
             state.shape,
             generator=generator,
@@ -262,7 +277,7 @@ def _train_one(
     with torch.inference_mode():
         probe_generator = torch.Generator(device=device).manual_seed(70000 + seed)
         train_context, _, train_state, _ = world.sample(args.eval_samples, probe_generator)
-        test_context, test_target, test_state, _ = world.sample(
+        test_context, test_target, test_state, test_next_state = world.sample(
             args.eval_samples,
             probe_generator,
         )
@@ -278,6 +293,12 @@ def _train_one(
             test_embeddings,
             test_state,
         )
+        predicted_next_state_r2 = _linear_probe_r2(
+            train_embeddings,
+            train_state,
+            predicted_embeddings,
+            test_next_state,
+        )
         evaluation_sigreg = SIGReg(
             num_slices=max(args.num_slices, 512),
             seed=314159,
@@ -290,6 +311,7 @@ def _train_one(
             seed=seed,
             prediction_mse=prediction_mse,
             linear_probe_r2=probe_r2,
+            predicted_next_state_r2=predicted_next_state_r2,
             sigreg_statistic=sigreg_statistic,
             train_seconds=elapsed,
             **covariance,
@@ -381,6 +403,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--learning-rate", type=float, default=1e-3)
     parser.add_argument("--variance-weight", type=float, default=1.0)
     parser.add_argument("--sigreg-weight", type=float, default=0.02)
+    parser.add_argument(
+        "--state-distribution", choices=("gaussian", "bimodal"), default="gaussian"
+    )
     parser.add_argument("--log-every", type=int, default=100)
     return parser.parse_args()
 
@@ -398,7 +423,9 @@ def main() -> None:
         raise ValueError("seeds, steps, batch_size, and eval_samples must be non-empty/positive")
 
     device = _choose_device(args.device)
-    world = SyntheticWorld(args.state_dim, args.observation_dim, device)
+    world = SyntheticWorld(
+        args.state_dim, args.observation_dim, device, args.state_distribution
+    )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     runs: list[RunMetrics] = []
     histories: dict[str, list[dict[str, float]]] = {}
