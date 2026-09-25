@@ -467,7 +467,9 @@ def main() -> None:
     summary_path = args.output_dir / "summary.json"
     summary_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     with (args.output_dir / "metrics.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(RunMetrics.__dataclass_fields__))
+        writer = csv.DictWriter(
+            handle, fieldnames=list(RunMetrics.__dataclass_fields__), lineterminator="\n"
+        )
         writer.writeheader()
         writer.writerows(asdict(run) for run in runs)
     _write_report(payload, args.output_dir / "REPORT.md")

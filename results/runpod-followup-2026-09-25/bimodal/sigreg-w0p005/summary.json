@@ -1,0 +1,420 @@
+{
+  "configuration": {
+    "batch_size": 1024,
+    "device": "cuda",
+    "eval_samples": 4096,
+    "hidden_dim": 128,
+    "learning_rate": 0.001,
+    "log_every": 100,
+    "num_factors": 4,
+    "num_slices": 256,
+    "observation_dim": 32,
+    "output_dir": "results/runpod-followup-2026-09-25/bimodal/sigreg-w0p005",
+    "seeds": "0,1,2",
+    "sigreg_weight": 0.005,
+    "state_dim": 8,
+    "state_distribution": "bimodal",
+    "steps": 1500,
+    "variance_weight": 1.0,
+    "variants": "sigreg"
+  },
+  "environment": {
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "device_name": "NVIDIA RTX PRO 4000 Blackwell",
+    "python_version": "3.12.3",
+    "torch_version": "2.8.0+cu128"
+  },
+  "history": {
+    "sigreg/seed-0": [
+      {
+        "prediction": 0.007523497566580772,
+        "regularization": 4.11558198928833,
+        "step": 1.0,
+        "total": 4.123105525970459
+      },
+      {
+        "prediction": 0.056933484971523285,
+        "regularization": 0.23063775897026062,
+        "step": 100.0,
+        "total": 0.2875712513923645
+      },
+      {
+        "prediction": 0.03031672164797783,
+        "regularization": 0.2094777673482895,
+        "step": 200.0,
+        "total": 0.23979449272155762
+      },
+      {
+        "prediction": 0.026514781638979912,
+        "regularization": 0.12983229756355286,
+        "step": 300.0,
+        "total": 0.15634708106517792
+      },
+      {
+        "prediction": 0.022175654768943787,
+        "regularization": 0.0692480280995369,
+        "step": 400.0,
+        "total": 0.09142368286848068
+      },
+      {
+        "prediction": 0.016255594789981842,
+        "regularization": 0.062448546290397644,
+        "step": 500.0,
+        "total": 0.07870414108037949
+      },
+      {
+        "prediction": 0.014035790227353573,
+        "regularization": 0.021923989057540894,
+        "step": 600.0,
+        "total": 0.03595978021621704
+      },
+      {
+        "prediction": 0.012400712817907333,
+        "regularization": 0.022540636360645294,
+        "step": 700.0,
+        "total": 0.03494134917855263
+      },
+      {
+        "prediction": 0.011993968859314919,
+        "regularization": 0.031881723552942276,
+        "step": 800.0,
+        "total": 0.043875694274902344
+      },
+      {
+        "prediction": 0.01092318631708622,
+        "regularization": 0.02682822197675705,
+        "step": 900.0,
+        "total": 0.03775140643119812
+      },
+      {
+        "prediction": 0.010392116382718086,
+        "regularization": 0.024844355881214142,
+        "step": 1000.0,
+        "total": 0.03523647040128708
+      },
+      {
+        "prediction": 0.010363567620515823,
+        "regularization": 0.024520643055438995,
+        "step": 1100.0,
+        "total": 0.03488421067595482
+      },
+      {
+        "prediction": 0.009968461468815804,
+        "regularization": 0.019279342144727707,
+        "step": 1200.0,
+        "total": 0.02924780361354351
+      },
+      {
+        "prediction": 0.009526347741484642,
+        "regularization": 0.025149060413241386,
+        "step": 1300.0,
+        "total": 0.03467540815472603
+      },
+      {
+        "prediction": 0.00930428970605135,
+        "regularization": 0.020557047799229622,
+        "step": 1400.0,
+        "total": 0.029861338436603546
+      },
+      {
+        "prediction": 0.008955733850598335,
+        "regularization": 0.023873135447502136,
+        "step": 1500.0,
+        "total": 0.03282886743545532
+      }
+    ],
+    "sigreg/seed-1": [
+      {
+        "prediction": 0.010720614343881607,
+        "regularization": 4.135378360748291,
+        "step": 1.0,
+        "total": 4.146099090576172
+      },
+      {
+        "prediction": 0.04678434133529663,
+        "regularization": 0.3787120282649994,
+        "step": 100.0,
+        "total": 0.425496369600296
+      },
+      {
+        "prediction": 0.03999035805463791,
+        "regularization": 0.23202142119407654,
+        "step": 200.0,
+        "total": 0.27201178669929504
+      },
+      {
+        "prediction": 0.029329603537917137,
+        "regularization": 0.09734254330396652,
+        "step": 300.0,
+        "total": 0.1266721487045288
+      },
+      {
+        "prediction": 0.021551549434661865,
+        "regularization": 0.07848060876131058,
+        "step": 400.0,
+        "total": 0.10003215819597244
+      },
+      {
+        "prediction": 0.016378574073314667,
+        "regularization": 0.06070432439446449,
+        "step": 500.0,
+        "total": 0.07708290219306946
+      },
+      {
+        "prediction": 0.01398418191820383,
+        "regularization": 0.02577013522386551,
+        "step": 600.0,
+        "total": 0.039754316210746765
+      },
+      {
+        "prediction": 0.012358119711279869,
+        "regularization": 0.01898525469005108,
+        "step": 700.0,
+        "total": 0.03134337440133095
+      },
+      {
+        "prediction": 0.011509329080581665,
+        "regularization": 0.023113789036870003,
+        "step": 800.0,
+        "total": 0.03462311625480652
+      },
+      {
+        "prediction": 0.011350901797413826,
+        "regularization": 0.022173071280121803,
+        "step": 900.0,
+        "total": 0.03352397307753563
+      },
+      {
+        "prediction": 0.010774511843919754,
+        "regularization": 0.02554992213845253,
+        "step": 1000.0,
+        "total": 0.036324433982372284
+      },
+      {
+        "prediction": 0.01018621027469635,
+        "regularization": 0.02721387892961502,
+        "step": 1100.0,
+        "total": 0.03740008920431137
+      },
+      {
+        "prediction": 0.009787335991859436,
+        "regularization": 0.020254267379641533,
+        "step": 1200.0,
+        "total": 0.03004160337150097
+      },
+      {
+        "prediction": 0.009582113474607468,
+        "regularization": 0.020929710939526558,
+        "step": 1300.0,
+        "total": 0.030511824414134026
+      },
+      {
+        "prediction": 0.009142452850937843,
+        "regularization": 0.022936543449759483,
+        "step": 1400.0,
+        "total": 0.03207899630069733
+      },
+      {
+        "prediction": 0.009025437757372856,
+        "regularization": 0.030209893360733986,
+        "step": 1500.0,
+        "total": 0.03923533111810684
+      }
+    ],
+    "sigreg/seed-2": [
+      {
+        "prediction": 0.009816654026508331,
+        "regularization": 4.122945308685303,
+        "step": 1.0,
+        "total": 4.1327619552612305
+      },
+      {
+        "prediction": 0.07123037427663803,
+        "regularization": 0.3182374835014343,
+        "step": 100.0,
+        "total": 0.38946786522865295
+      },
+      {
+        "prediction": 0.03796191141009331,
+        "regularization": 0.13533009588718414,
+        "step": 200.0,
+        "total": 0.17329201102256775
+      },
+      {
+        "prediction": 0.027120180428028107,
+        "regularization": 0.08455182611942291,
+        "step": 300.0,
+        "total": 0.11167200654745102
+      },
+      {
+        "prediction": 0.020810170099139214,
+        "regularization": 0.08182625472545624,
+        "step": 400.0,
+        "total": 0.1026364266872406
+      },
+      {
+        "prediction": 0.016958363354206085,
+        "regularization": 0.07990174740552902,
+        "step": 500.0,
+        "total": 0.09686011075973511
+      },
+      {
+        "prediction": 0.013323220424354076,
+        "regularization": 0.028940150514245033,
+        "step": 600.0,
+        "total": 0.042263370007276535
+      },
+      {
+        "prediction": 0.011650621891021729,
+        "regularization": 0.023437391966581345,
+        "step": 700.0,
+        "total": 0.03508801385760307
+      },
+      {
+        "prediction": 0.010757162235677242,
+        "regularization": 0.022852126508951187,
+        "step": 800.0,
+        "total": 0.033609289675951004
+      },
+      {
+        "prediction": 0.010529952123761177,
+        "regularization": 0.023085961118340492,
+        "step": 900.0,
+        "total": 0.03361591324210167
+      },
+      {
+        "prediction": 0.010368674993515015,
+        "regularization": 0.026717381551861763,
+        "step": 1000.0,
+        "total": 0.03708605468273163
+      },
+      {
+        "prediction": 0.009836935438215733,
+        "regularization": 0.021263044327497482,
+        "step": 1100.0,
+        "total": 0.03109997883439064
+      },
+      {
+        "prediction": 0.009211491793394089,
+        "regularization": 0.029275113716721535,
+        "step": 1200.0,
+        "total": 0.03848660737276077
+      },
+      {
+        "prediction": 0.009488067589700222,
+        "regularization": 0.021446989849209785,
+        "step": 1300.0,
+        "total": 0.030935056507587433
+      },
+      {
+        "prediction": 0.009387088939547539,
+        "regularization": 0.022192882373929024,
+        "step": 1400.0,
+        "total": 0.03157997131347656
+      },
+      {
+        "prediction": 0.00877268798649311,
+        "regularization": 0.0192515030503273,
+        "step": 1500.0,
+        "total": 0.02802419103682041
+      }
+    ]
+  },
+  "runs": [
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 0.9765107352771747,
+      "coordinate_std_min": 0.9440589411510251,
+      "covariance_condition_number": 1.2252965159444282,
+      "covariance_identity_rmse": 0.029379802361252642,
+      "effective_rank": 7.979111432666789,
+      "linear_probe_r2": 0.9822736027174888,
+      "predicted_next_state_r2": 0.9726170474290948,
+      "prediction_mse": 0.009215097874403,
+      "seed": 0,
+      "sigreg_statistic": 11.461454391479492,
+      "train_seconds": 8.863087923265994,
+      "variant": "sigreg"
+    },
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 0.9735840563141971,
+      "coordinate_std_min": 0.9456509093114267,
+      "covariance_condition_number": 1.3051523315956894,
+      "covariance_identity_rmse": 0.03302322882479782,
+      "effective_rank": 7.973221332821562,
+      "linear_probe_r2": 0.9799614450754894,
+      "predicted_next_state_r2": 0.9702401167849777,
+      "prediction_mse": 0.00885979924350977,
+      "seed": 1,
+      "sigreg_statistic": 10.632200241088867,
+      "train_seconds": 8.384517562575638,
+      "variant": "sigreg"
+    },
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 0.9808183467064224,
+      "coordinate_std_min": 0.9673460196929653,
+      "covariance_condition_number": 1.3569668905348278,
+      "covariance_identity_rmse": 0.03388801339916144,
+      "effective_rank": 7.966660020244229,
+      "linear_probe_r2": 0.9808478252857301,
+      "predicted_next_state_r2": 0.9704216808465977,
+      "prediction_mse": 0.008831571787595749,
+      "seed": 2,
+      "sigreg_statistic": 9.880324363708496,
+      "train_seconds": 7.984937240369618,
+      "variant": "sigreg"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "sigreg": {
+      "collapsed_coordinate_fraction": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "coordinate_std_mean": {
+        "mean": 0.9769710460992647,
+        "std": 0.0036390457416005197
+      },
+      "coordinate_std_min": {
+        "mean": 0.9523519567184723,
+        "std": 0.013009613138684342
+      },
+      "covariance_condition_number": {
+        "mean": 1.2958052460249818,
+        "std": 0.06633097234847105
+      },
+      "covariance_identity_rmse": {
+        "mean": 0.0320970148617373,
+        "std": 0.0023925709852806645
+      },
+      "effective_rank": {
+        "mean": 7.972997595244194,
+        "std": 0.006228720711897335
+      },
+      "linear_probe_r2": {
+        "mean": 0.9810276243595695,
+        "std": 0.001166517904097094
+      },
+      "predicted_next_state_r2": {
+        "mean": 0.9710929483535568,
+        "std": 0.0013230267839919223
+      },
+      "prediction_mse": {
+        "mean": 0.00896882296850284,
+        "std": 0.00021374679944725293
+      },
+      "sigreg_statistic": {
+        "mean": 10.657992998758951,
+        "std": 0.7908805162228669
+      },
+      "train_seconds": {
+        "mean": 8.41084757540375,
+        "std": 0.43966704180491983
+      }
+    }
+  }
+}

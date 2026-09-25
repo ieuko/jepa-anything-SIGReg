@@ -1,0 +1,420 @@
+{
+  "configuration": {
+    "batch_size": 1024,
+    "device": "cuda",
+    "eval_samples": 4096,
+    "hidden_dim": 128,
+    "learning_rate": 0.001,
+    "log_every": 100,
+    "num_factors": 4,
+    "num_slices": 256,
+    "observation_dim": 32,
+    "output_dir": "results/runpod-followup-2026-09-25/bimodal/variance-w1",
+    "seeds": "0,1,2",
+    "sigreg_weight": 0.02,
+    "state_dim": 8,
+    "state_distribution": "bimodal",
+    "steps": 1500,
+    "variance_weight": 1.0,
+    "variants": "variance"
+  },
+  "environment": {
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "device_name": "NVIDIA RTX PRO 4000 Blackwell",
+    "python_version": "3.12.3",
+    "torch_version": "2.8.0+cu128"
+  },
+  "history": {
+    "variance/seed-0": [
+      {
+        "prediction": 0.007523497566580772,
+        "regularization": 1.9369385242462158,
+        "step": 1.0,
+        "total": 1.9444620609283447
+      },
+      {
+        "prediction": 0.017826413735747337,
+        "regularization": 0.0,
+        "step": 100.0,
+        "total": 0.017826413735747337
+      },
+      {
+        "prediction": 0.010612880811095238,
+        "regularization": 0.0,
+        "step": 200.0,
+        "total": 0.010612880811095238
+      },
+      {
+        "prediction": 0.009756805375218391,
+        "regularization": 0.0,
+        "step": 300.0,
+        "total": 0.009756805375218391
+      },
+      {
+        "prediction": 0.00787530466914177,
+        "regularization": 0.0,
+        "step": 400.0,
+        "total": 0.00787530466914177
+      },
+      {
+        "prediction": 0.0075018275529146194,
+        "regularization": 0.0,
+        "step": 500.0,
+        "total": 0.0075018275529146194
+      },
+      {
+        "prediction": 0.007495807949453592,
+        "regularization": 0.0,
+        "step": 600.0,
+        "total": 0.007495807949453592
+      },
+      {
+        "prediction": 0.006739870645105839,
+        "regularization": 0.0,
+        "step": 700.0,
+        "total": 0.006739870645105839
+      },
+      {
+        "prediction": 0.007007174659520388,
+        "regularization": 0.0,
+        "step": 800.0,
+        "total": 0.007007174659520388
+      },
+      {
+        "prediction": 0.004796045366674662,
+        "regularization": 0.0,
+        "step": 900.0,
+        "total": 0.004796045366674662
+      },
+      {
+        "prediction": 0.004136143252253532,
+        "regularization": 0.0,
+        "step": 1000.0,
+        "total": 0.004136143252253532
+      },
+      {
+        "prediction": 0.003506335662677884,
+        "regularization": 0.0,
+        "step": 1100.0,
+        "total": 0.003506335662677884
+      },
+      {
+        "prediction": 0.0027256226167082787,
+        "regularization": 0.0,
+        "step": 1200.0,
+        "total": 0.0027256226167082787
+      },
+      {
+        "prediction": 0.002144526457414031,
+        "regularization": 0.0,
+        "step": 1300.0,
+        "total": 0.002144526457414031
+      },
+      {
+        "prediction": 0.0018673428567126393,
+        "regularization": 0.0,
+        "step": 1400.0,
+        "total": 0.0018673428567126393
+      },
+      {
+        "prediction": 0.0013976995833218098,
+        "regularization": 0.0,
+        "step": 1500.0,
+        "total": 0.0013976995833218098
+      }
+    ],
+    "variance/seed-1": [
+      {
+        "prediction": 0.010720614343881607,
+        "regularization": 1.9378377199172974,
+        "step": 1.0,
+        "total": 1.9485583305358887
+      },
+      {
+        "prediction": 0.03586769476532936,
+        "regularization": 0.0,
+        "step": 100.0,
+        "total": 0.03586769476532936
+      },
+      {
+        "prediction": 0.015069975517690182,
+        "regularization": 0.0,
+        "step": 200.0,
+        "total": 0.015069975517690182
+      },
+      {
+        "prediction": 0.011724055744707584,
+        "regularization": 0.0,
+        "step": 300.0,
+        "total": 0.011724055744707584
+      },
+      {
+        "prediction": 0.01002158410847187,
+        "regularization": 0.0,
+        "step": 400.0,
+        "total": 0.01002158410847187
+      },
+      {
+        "prediction": 0.008438453078269958,
+        "regularization": 0.0,
+        "step": 500.0,
+        "total": 0.008438453078269958
+      },
+      {
+        "prediction": 0.010188326239585876,
+        "regularization": 0.0,
+        "step": 600.0,
+        "total": 0.010188326239585876
+      },
+      {
+        "prediction": 0.00708518922328949,
+        "regularization": 0.0,
+        "step": 700.0,
+        "total": 0.00708518922328949
+      },
+      {
+        "prediction": 0.006241770461201668,
+        "regularization": 0.0,
+        "step": 800.0,
+        "total": 0.006241770461201668
+      },
+      {
+        "prediction": 0.0053409188985824585,
+        "regularization": 0.0,
+        "step": 900.0,
+        "total": 0.0053409188985824585
+      },
+      {
+        "prediction": 0.005226383451372385,
+        "regularization": 0.0,
+        "step": 1000.0,
+        "total": 0.005226383451372385
+      },
+      {
+        "prediction": 0.004201260395348072,
+        "regularization": 0.0,
+        "step": 1100.0,
+        "total": 0.004201260395348072
+      },
+      {
+        "prediction": 0.002910453360527754,
+        "regularization": 0.0,
+        "step": 1200.0,
+        "total": 0.002910453360527754
+      },
+      {
+        "prediction": 0.0025025270879268646,
+        "regularization": 0.0,
+        "step": 1300.0,
+        "total": 0.0025025270879268646
+      },
+      {
+        "prediction": 0.00178245035931468,
+        "regularization": 0.0,
+        "step": 1400.0,
+        "total": 0.00178245035931468
+      },
+      {
+        "prediction": 0.0013201205292716622,
+        "regularization": 0.0,
+        "step": 1500.0,
+        "total": 0.0013201205292716622
+      }
+    ],
+    "variance/seed-2": [
+      {
+        "prediction": 0.009816654026508331,
+        "regularization": 1.9445158243179321,
+        "step": 1.0,
+        "total": 1.9543324708938599
+      },
+      {
+        "prediction": 0.02530684508383274,
+        "regularization": 0.0,
+        "step": 100.0,
+        "total": 0.02530684508383274
+      },
+      {
+        "prediction": 0.012551655992865562,
+        "regularization": 0.0,
+        "step": 200.0,
+        "total": 0.012551655992865562
+      },
+      {
+        "prediction": 0.012011364102363586,
+        "regularization": 0.0,
+        "step": 300.0,
+        "total": 0.012011364102363586
+      },
+      {
+        "prediction": 0.009225286543369293,
+        "regularization": 0.0,
+        "step": 400.0,
+        "total": 0.009225286543369293
+      },
+      {
+        "prediction": 0.009859036654233932,
+        "regularization": 0.0,
+        "step": 500.0,
+        "total": 0.009859036654233932
+      },
+      {
+        "prediction": 0.00807817280292511,
+        "regularization": 0.0,
+        "step": 600.0,
+        "total": 0.00807817280292511
+      },
+      {
+        "prediction": 0.0073353503830730915,
+        "regularization": 0.0,
+        "step": 700.0,
+        "total": 0.0073353503830730915
+      },
+      {
+        "prediction": 0.005748738534748554,
+        "regularization": 0.0,
+        "step": 800.0,
+        "total": 0.005748738534748554
+      },
+      {
+        "prediction": 0.00610522273927927,
+        "regularization": 0.0,
+        "step": 900.0,
+        "total": 0.00610522273927927
+      },
+      {
+        "prediction": 0.004434520378708839,
+        "regularization": 0.0,
+        "step": 1000.0,
+        "total": 0.004434520378708839
+      },
+      {
+        "prediction": 0.003742316272109747,
+        "regularization": 0.0,
+        "step": 1100.0,
+        "total": 0.003742316272109747
+      },
+      {
+        "prediction": 0.0033297999761998653,
+        "regularization": 0.0,
+        "step": 1200.0,
+        "total": 0.0033297999761998653
+      },
+      {
+        "prediction": 0.0021429904736578465,
+        "regularization": 0.0,
+        "step": 1300.0,
+        "total": 0.0021429904736578465
+      },
+      {
+        "prediction": 0.001532299560494721,
+        "regularization": 0.0,
+        "step": 1400.0,
+        "total": 0.001532299560494721
+      },
+      {
+        "prediction": 0.0012102287728339434,
+        "regularization": 0.0,
+        "step": 1500.0,
+        "total": 0.0012102287728339434
+      }
+    ]
+  },
+  "runs": [
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 1.1640078949533472,
+      "coordinate_std_min": 1.0593846038790034,
+      "covariance_condition_number": 188421.27096106103,
+      "covariance_identity_rmse": 1.229118132966191,
+      "effective_rank": 1.1721747294319407,
+      "linear_probe_r2": 0.2986791258571522,
+      "predicted_next_state_r2": 0.26470976964605575,
+      "prediction_mse": 0.0015039843274280429,
+      "seed": 0,
+      "sigreg_statistic": 1617.855224609375,
+      "train_seconds": 6.756418012082577,
+      "variant": "variance"
+    },
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 1.1630951019899034,
+      "coordinate_std_min": 1.0884019981501263,
+      "covariance_condition_number": 154599.70105588285,
+      "covariance_identity_rmse": 1.2424006839340402,
+      "effective_rank": 1.1207737005971823,
+      "linear_probe_r2": 0.48997530368879527,
+      "predicted_next_state_r2": 0.49281901796105565,
+      "prediction_mse": 0.0013995982008054852,
+      "seed": 1,
+      "sigreg_statistic": 1644.3056640625,
+      "train_seconds": 6.554305518977344,
+      "variant": "variance"
+    },
+    {
+      "collapsed_coordinate_fraction": 0.0,
+      "coordinate_std_mean": 1.20683713576084,
+      "coordinate_std_min": 1.117124329746293,
+      "covariance_condition_number": 246878.06366342152,
+      "covariance_identity_rmse": 1.3731185685593137,
+      "effective_rank": 1.0135271645837722,
+      "linear_probe_r2": 0.3835379778940975,
+      "predicted_next_state_r2": 0.3098046386423916,
+      "prediction_mse": 0.0014720628969371319,
+      "seed": 2,
+      "sigreg_statistic": 1661.401611328125,
+      "train_seconds": 6.353789449669421,
+      "variant": "variance"
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "variance": {
+      "collapsed_coordinate_fraction": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "coordinate_std_mean": {
+        "mean": 1.1779800442346968,
+        "std": 0.02499514145308406
+      },
+      "coordinate_std_min": {
+        "mean": 1.0883036439251408,
+        "std": 0.02886998858629177
+      },
+      "covariance_condition_number": {
+        "mean": 196633.01189345514,
+        "std": 46684.02904889064
+      },
+      "covariance_identity_rmse": {
+        "mean": 1.2815457951531817,
+        "std": 0.07958194620654534
+      },
+      "effective_rank": {
+        "mean": 1.1021585315376317,
+        "std": 0.08094538805515845
+      },
+      "linear_probe_r2": {
+        "mean": 0.39073080248001496,
+        "std": 0.09585071443339241
+      },
+      "predicted_next_state_r2": {
+        "mean": 0.3557778087498343,
+        "std": 0.12080400063327568
+      },
+      "prediction_mse": {
+        "mean": 0.0014585484750568867,
+        "std": 5.348920972386017e-05
+      },
+      "sigreg_statistic": {
+        "mean": 1641.1875,
+        "std": 21.94001274852026
+      },
+      "train_seconds": {
+        "mean": 6.5548376602431135,
+        "std": 0.20131480869142793
+      }
+    }
+  }
+}

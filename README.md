@@ -39,6 +39,8 @@ This repository provides the reusable core, task-design tools, and an executable
 
 The matched 3-seed Runpod ablation and raw metrics are in
 [`results/runpod-2026-09-25`](results/runpod-2026-09-25/REPORT.md).
+The 54-run weight and non-Gaussian robustness sweep is in
+[`results/runpod-followup-2026-09-25`](results/runpod-followup-2026-09-25/REPORT.md).
 
 ## Quick start
 
