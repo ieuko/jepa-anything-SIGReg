@@ -8,6 +8,7 @@ import json
 import platform
 import tarfile
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -24,6 +25,7 @@ from torch import Tensor, nn
 
 URL = "https://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz"
 MD5 = "c32a1d4ab5d03f1284b67883e8d87530"
+ARCHIVE_BYTES = 170052171
 VARIANTS = ("random", "prediction-only", "variance", "sigreg")
 
 
@@ -54,9 +56,25 @@ def load_cifar(data_dir: Path, download_url: str) -> tuple[Tensor, Tensor, Tenso
     archive = data_dir / "cifar-10-binary.tar.gz"
     if not archive.exists() or file_md5(archive) != MD5:
         temporary = data_dir / "cifar-10-binary.part"
-        with urllib.request.urlopen(download_url, timeout=120) as response, temporary.open("wb") as dest:
-            for chunk in iter(lambda: response.read(1 << 20), b""):
-                dest.write(chunk)
+        for attempt in range(12):
+            offset = temporary.stat().st_size if temporary.exists() else 0
+            if offset == ARCHIVE_BYTES:
+                break
+            headers = {"Range": f"bytes={offset}-"} if offset else {}
+            request = urllib.request.Request(download_url, headers=headers)
+            try:
+                with urllib.request.urlopen(request, timeout=45) as response:
+                    if offset and response.status != 206:
+                        offset = 0
+                    mode = "ab" if offset else "wb"
+                    with temporary.open(mode) as dest:
+                        for chunk in iter(lambda: response.read(1 << 20), b""):
+                            dest.write(chunk)
+            except (OSError, urllib.error.URLError) as error:
+                print(f"download retry {attempt + 1}: {error}", flush=True)
+                time.sleep(2)
+        if not temporary.exists() or temporary.stat().st_size != ARCHIVE_BYTES:
+            raise RuntimeError("CIFAR-10 download did not complete after retries")
         if file_md5(temporary) != MD5:
             raise RuntimeError("CIFAR-10 archive checksum mismatch")
         temporary.replace(archive)
