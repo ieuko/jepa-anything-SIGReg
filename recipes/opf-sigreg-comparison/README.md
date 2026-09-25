@@ -37,6 +37,8 @@ reproduced; this comparison matches FLOPs *between its three arms* by sharing
 the exact predictor implementation.
 
 The [protocol](PROTOCOL.md) was committed before the full experiment.
+The [completed 3-seed results and interpretation](../../results/opf-sigreg-comparison-2026-09-25/REPORT.md)
+are available separately from the raw metrics.
 
 ```bash
 PYTHONPATH=jepa-anything-core/src python3 \

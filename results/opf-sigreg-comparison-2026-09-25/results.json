@@ -1,0 +1,1088 @@
+{
+  "configuration": {
+    "batch_size": 256,
+    "device": "cpu",
+    "ema_momentum": 0.996,
+    "hidden": 444,
+    "learning_rate": 0.001,
+    "log_every": 100,
+    "num_slices": 256,
+    "output_dir": "results/opf-sigreg-comparison-2026-09-25",
+    "probe_ridge": 0.001,
+    "recipe": "recipes/synthetic-linear-dynamics/recipe.json",
+    "seeds": "0,1,2",
+    "sigreg_weight": 0.005,
+    "steps": 1000,
+    "variants": "original,original-plus-sigreg,sigreg-replaces-floors"
+  },
+  "environment": {
+    "device_name": "CPU",
+    "python_version": "3.11.2",
+    "torch_version": "2.11.0"
+  },
+  "generated_stream_sha256": "01458bda039dc23e4a6af255ed0ae75792db293d69f7e7a7b574fc290bb3f2d0",
+  "history": {
+    "original-plus-sigreg/seed-0": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.521963357925415,
+        "orthogonality": 0.0,
+        "prediction": 0.05527346581220627,
+        "sigreg": 93.33798217773438,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.029542408883571625,
+        "orthogonality": 0.0004749639192596078,
+        "prediction": 0.003288986161351204,
+        "sigreg": 5.245934963226318,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03178048133850098,
+        "orthogonality": 0.004059155471622944,
+        "prediction": 0.011654676869511604,
+        "sigreg": 3.9845690727233887,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03904649615287781,
+        "orthogonality": 0.01802726835012436,
+        "prediction": 0.020697230473160744,
+        "sigreg": 3.4895803928375244,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.042791783809661865,
+        "orthogonality": 0.04074513912200928,
+        "prediction": 0.026550201699137688,
+        "sigreg": 2.840864658355713,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.050717394798994064,
+        "orthogonality": 0.0686032623052597,
+        "prediction": 0.03234316036105156,
+        "sigreg": 2.988814353942871,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06334216147661209,
+        "orthogonality": 0.09473049640655518,
+        "prediction": 0.0382678247988224,
+        "sigreg": 4.067562103271484,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06535715609788895,
+        "orthogonality": 0.11868063360452652,
+        "prediction": 0.04270872473716736,
+        "sigreg": 3.3428800106048584,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06730705499649048,
+        "orthogonality": 0.141278475522995,
+        "prediction": 0.04222907871007919,
+        "sigreg": 3.6028099060058594,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06177779287099838,
+        "orthogonality": 0.15725061297416687,
+        "prediction": 0.04014544188976288,
+        "sigreg": 2.7539639472961426,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06542550772428513,
+        "orthogonality": 0.17065724730491638,
+        "prediction": 0.044017910957336426,
+        "sigreg": 2.5749471187591553,
+        "step": 1000.0
+      }
+    ],
+    "original-plus-sigreg/seed-1": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.5057992339134216,
+        "orthogonality": 0.0,
+        "prediction": 0.04698159173130989,
+        "sigreg": 91.7635269165039,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.028727063909173012,
+        "orthogonality": 0.0003224428801331669,
+        "prediction": 0.003270537592470646,
+        "sigreg": 5.088080883026123,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.02872736006975174,
+        "orthogonality": 0.0032804743386805058,
+        "prediction": 0.009946908801794052,
+        "sigreg": 3.7232859134674072,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.034684523940086365,
+        "orthogonality": 0.01220286451280117,
+        "prediction": 0.016883302479982376,
+        "sigreg": 3.4382152557373047,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04871519282460213,
+        "orthogonality": 0.027680732309818268,
+        "prediction": 0.028248226270079613,
+        "sigreg": 3.8165860176086426,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04577308148145676,
+        "orthogonality": 0.042384933680295944,
+        "prediction": 0.029473209753632545,
+        "sigreg": 2.8361258506774902,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04809507727622986,
+        "orthogonality": 0.0588143914937973,
+        "prediction": 0.02966115064918995,
+        "sigreg": 3.0986416339874268,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05003231018781662,
+        "orthogonality": 0.0760684683918953,
+        "prediction": 0.03326473385095596,
+        "sigreg": 2.5928304195404053,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.054563697427511215,
+        "orthogonality": 0.0894707590341568,
+        "prediction": 0.035543572157621384,
+        "sigreg": 2.9093177318573,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05309000983834267,
+        "orthogonality": 0.09801478683948517,
+        "prediction": 0.03282373398542404,
+        "sigreg": 3.0731072425842285,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0568886362016201,
+        "orthogonality": 0.10539610683917999,
+        "prediction": 0.03528750687837601,
+        "sigreg": 3.2662644386291504,
+        "step": 1000.0
+      }
+    ],
+    "original-plus-sigreg/seed-2": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.5043103098869324,
+        "orthogonality": 0.0,
+        "prediction": 0.01682724617421627,
+        "sigreg": 97.49662017822266,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03233973681926727,
+        "orthogonality": 0.00033439588150940835,
+        "prediction": 0.0035207956098020077,
+        "sigreg": 5.760444164276123,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.02893814817070961,
+        "orthogonality": 0.002340790582820773,
+        "prediction": 0.007973650470376015,
+        "sigreg": 4.169491767883301,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03944157063961029,
+        "orthogonality": 0.008470812812447548,
+        "prediction": 0.013500847853720188,
+        "sigreg": 5.1034369468688965,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03594614565372467,
+        "orthogonality": 0.0178552083671093,
+        "prediction": 0.019761495292186737,
+        "sigreg": 3.058377981185913,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0465339720249176,
+        "orthogonality": 0.03204122558236122,
+        "prediction": 0.025686316192150116,
+        "sigreg": 3.849118709564209,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.046848054975271225,
+        "orthogonality": 0.04407057538628578,
+        "prediction": 0.028538011014461517,
+        "sigreg": 3.2213034629821777,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.050589896738529205,
+        "orthogonality": 0.0583367682993412,
+        "prediction": 0.03131165727972984,
+        "sigreg": 3.27228045463562,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.049910303205251694,
+        "orthogonality": 0.07288891077041626,
+        "prediction": 0.030113056302070618,
+        "sigreg": 3.230560779571533,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06262736022472382,
+        "orthogonality": 0.08187955617904663,
+        "prediction": 0.03509145230054855,
+        "sigreg": 4.6883864402771,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05497215315699577,
+        "orthogonality": 0.09824921190738678,
+        "prediction": 0.034676678478717804,
+        "sigreg": 3.0766024589538574,
+        "step": 1000.0
+      }
+    ],
+    "original/seed-0": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05527346581220627,
+        "orthogonality": 0.0,
+        "prediction": 0.05527346581220627,
+        "sigreg": 0.0,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0009748176671564579,
+        "orthogonality": 7.620899850735441e-05,
+        "prediction": 0.0009710072190500796,
+        "sigreg": -0.0,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0015440137358382344,
+        "orthogonality": 9.381880227010697e-05,
+        "prediction": 0.001539322780445218,
+        "sigreg": -0.0,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0022487405221909285,
+        "orthogonality": 0.00023798159963916987,
+        "prediction": 0.002236841479316354,
+        "sigreg": 0.0,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.002993963658809662,
+        "orthogonality": 0.00037140760105103254,
+        "prediction": 0.002975393319502473,
+        "sigreg": 0.0,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.003527819411829114,
+        "orthogonality": 0.0005390171427279711,
+        "prediction": 0.0035008685663342476,
+        "sigreg": 0.0,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.004759291652590036,
+        "orthogonality": 0.0009261177619919181,
+        "prediction": 0.0047129858285188675,
+        "sigreg": 0.0,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.005650687497109175,
+        "orthogonality": 0.0011967971222475171,
+        "prediction": 0.005590847693383694,
+        "sigreg": 0.0,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.005912399385124445,
+        "orthogonality": 0.0016076283063739538,
+        "prediction": 0.005832017865031958,
+        "sigreg": 0.0,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.006547440309077501,
+        "orthogonality": 0.0016180349048227072,
+        "prediction": 0.006466538645327091,
+        "sigreg": 0.0,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.008062489330768585,
+        "orthogonality": 0.0021952507086098194,
+        "prediction": 0.007952726446092129,
+        "sigreg": 0.0,
+        "step": 1000.0
+      }
+    ],
+    "original/seed-1": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04698159173130989,
+        "orthogonality": 0.0,
+        "prediction": 0.04698159173130989,
+        "sigreg": -0.0,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0008330886485055089,
+        "orthogonality": 2.8954756999155506e-05,
+        "prediction": 0.0008316409075632691,
+        "sigreg": -0.0,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0011423310497775674,
+        "orthogonality": 6.218478665687144e-05,
+        "prediction": 0.0011392218293622136,
+        "sigreg": -0.0,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0017369462875649333,
+        "orthogonality": 0.0001551347377244383,
+        "prediction": 0.0017291895346716046,
+        "sigreg": -0.0,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0024091857485473156,
+        "orthogonality": 0.0002076523087453097,
+        "prediction": 0.0023988031316548586,
+        "sigreg": -0.0,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.003432144410908222,
+        "orthogonality": 0.00033167770016007125,
+        "prediction": 0.003415560582652688,
+        "sigreg": -0.0,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.004109757952392101,
+        "orthogonality": 0.0005940296687185764,
+        "prediction": 0.004080056678503752,
+        "sigreg": -0.0,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0047917235642671585,
+        "orthogonality": 0.0007691691862419248,
+        "prediction": 0.0047532650642097,
+        "sigreg": -0.0,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.005682278424501419,
+        "orthogonality": 0.0010219039395451546,
+        "prediction": 0.00563118327409029,
+        "sigreg": -0.0,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.00496770441532135,
+        "orthogonality": 0.0012099409941583872,
+        "prediction": 0.004907207563519478,
+        "sigreg": -0.0,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.006840218789875507,
+        "orthogonality": 0.0014194438699632883,
+        "prediction": 0.00676924642175436,
+        "sigreg": -0.0,
+        "step": 1000.0
+      }
+    ],
+    "original/seed-2": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.01682724617421627,
+        "orthogonality": 0.0,
+        "prediction": 0.01682724617421627,
+        "sigreg": 0.0,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.00084913638420403,
+        "orthogonality": 2.5512572392472066e-05,
+        "prediction": 0.0008478607633151114,
+        "sigreg": -0.0,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0011647313367575407,
+        "orthogonality": 5.625320045510307e-05,
+        "prediction": 0.0011619186261668801,
+        "sigreg": -0.0,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.001552142552100122,
+        "orthogonality": 0.00012281673843972385,
+        "prediction": 0.001546001760289073,
+        "sigreg": -0.0,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.002454860135912895,
+        "orthogonality": 0.0001541993406135589,
+        "prediction": 0.002447150181978941,
+        "sigreg": -0.0,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0027738409116864204,
+        "orthogonality": 0.0002601926098577678,
+        "prediction": 0.002760831266641617,
+        "sigreg": -0.0,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0036013622302562,
+        "orthogonality": 0.0003735395148396492,
+        "prediction": 0.0035826852545142174,
+        "sigreg": -0.0,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.003851124085485935,
+        "orthogonality": 0.0005144525784999132,
+        "prediction": 0.003825401421636343,
+        "sigreg": -0.0,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0039010541513562202,
+        "orthogonality": 0.0006066173082217574,
+        "prediction": 0.0038707233034074306,
+        "sigreg": -0.0,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.005325766280293465,
+        "orthogonality": 0.0007185484282672405,
+        "prediction": 0.005289838649332523,
+        "sigreg": 0.0,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0052040936425328255,
+        "orthogonality": 0.0008556165848858654,
+        "prediction": 0.005161312874406576,
+        "sigreg": 0.0,
+        "step": 1000.0
+      }
+    ],
+    "sigreg-replaces-floors/seed-0": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.521963357925415,
+        "orthogonality": 0.0,
+        "prediction": 0.05527346581220627,
+        "sigreg": 93.33798217773438,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.029542408883571625,
+        "orthogonality": 0.0004749639192596078,
+        "prediction": 0.003288986161351204,
+        "sigreg": 5.245934963226318,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03178048133850098,
+        "orthogonality": 0.004059155471622944,
+        "prediction": 0.011654676869511604,
+        "sigreg": 3.9845690727233887,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03904649615287781,
+        "orthogonality": 0.01802726835012436,
+        "prediction": 0.020697230473160744,
+        "sigreg": 3.4895803928375244,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.042791783809661865,
+        "orthogonality": 0.04074513912200928,
+        "prediction": 0.026550201699137688,
+        "sigreg": 2.840864658355713,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.050717394798994064,
+        "orthogonality": 0.0686032623052597,
+        "prediction": 0.03234316036105156,
+        "sigreg": 2.988814353942871,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06334216147661209,
+        "orthogonality": 0.09473049640655518,
+        "prediction": 0.0382678247988224,
+        "sigreg": 4.067562103271484,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06535715609788895,
+        "orthogonality": 0.11868063360452652,
+        "prediction": 0.04270872473716736,
+        "sigreg": 3.3428800106048584,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06730705499649048,
+        "orthogonality": 0.141278475522995,
+        "prediction": 0.04222907871007919,
+        "sigreg": 3.6028099060058594,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06177779287099838,
+        "orthogonality": 0.15725061297416687,
+        "prediction": 0.04014544188976288,
+        "sigreg": 2.7539639472961426,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06542550772428513,
+        "orthogonality": 0.17065724730491638,
+        "prediction": 0.044017910957336426,
+        "sigreg": 2.5749471187591553,
+        "step": 1000.0
+      }
+    ],
+    "sigreg-replaces-floors/seed-1": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.5057992339134216,
+        "orthogonality": 0.0,
+        "prediction": 0.04698159173130989,
+        "sigreg": 91.7635269165039,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.028727063909173012,
+        "orthogonality": 0.0003224428801331669,
+        "prediction": 0.003270537592470646,
+        "sigreg": 5.088080883026123,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.02872736006975174,
+        "orthogonality": 0.0032804743386805058,
+        "prediction": 0.009946908801794052,
+        "sigreg": 3.7232859134674072,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.034684523940086365,
+        "orthogonality": 0.01220286451280117,
+        "prediction": 0.016883302479982376,
+        "sigreg": 3.4382152557373047,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04871519282460213,
+        "orthogonality": 0.027680732309818268,
+        "prediction": 0.028248226270079613,
+        "sigreg": 3.8165860176086426,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04577308148145676,
+        "orthogonality": 0.042384933680295944,
+        "prediction": 0.029473209753632545,
+        "sigreg": 2.8361258506774902,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.04809507727622986,
+        "orthogonality": 0.0588143914937973,
+        "prediction": 0.02966115064918995,
+        "sigreg": 3.0986416339874268,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05003231018781662,
+        "orthogonality": 0.0760684683918953,
+        "prediction": 0.03326473385095596,
+        "sigreg": 2.5928304195404053,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.054563697427511215,
+        "orthogonality": 0.0894707590341568,
+        "prediction": 0.035543572157621384,
+        "sigreg": 2.9093177318573,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05309000983834267,
+        "orthogonality": 0.09801478683948517,
+        "prediction": 0.03282373398542404,
+        "sigreg": 3.0731072425842285,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0568886362016201,
+        "orthogonality": 0.10539610683917999,
+        "prediction": 0.03528750687837601,
+        "sigreg": 3.2662644386291504,
+        "step": 1000.0
+      }
+    ],
+    "sigreg-replaces-floors/seed-2": [
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.5043103098869324,
+        "orthogonality": 0.0,
+        "prediction": 0.01682724617421627,
+        "sigreg": 97.49662017822266,
+        "step": 1.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03233973681926727,
+        "orthogonality": 0.00033439588150940835,
+        "prediction": 0.0035207956098020077,
+        "sigreg": 5.760444164276123,
+        "step": 100.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.02893814817070961,
+        "orthogonality": 0.002340790582820773,
+        "prediction": 0.007973650470376015,
+        "sigreg": 4.169491767883301,
+        "step": 200.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03944157063961029,
+        "orthogonality": 0.008470812812447548,
+        "prediction": 0.013500847853720188,
+        "sigreg": 5.1034369468688965,
+        "step": 300.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.03594614565372467,
+        "orthogonality": 0.0178552083671093,
+        "prediction": 0.019761495292186737,
+        "sigreg": 3.058377981185913,
+        "step": 400.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.0465339720249176,
+        "orthogonality": 0.03204122558236122,
+        "prediction": 0.025686316192150116,
+        "sigreg": 3.849118709564209,
+        "step": 500.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.046848054975271225,
+        "orthogonality": 0.04407057538628578,
+        "prediction": 0.028538011014461517,
+        "sigreg": 3.2213034629821777,
+        "step": 600.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.050589896738529205,
+        "orthogonality": 0.0583367682993412,
+        "prediction": 0.03131165727972984,
+        "sigreg": 3.27228045463562,
+        "step": 700.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.049910303205251694,
+        "orthogonality": 0.07288891077041626,
+        "prediction": 0.030113056302070618,
+        "sigreg": 3.230560779571533,
+        "step": 800.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.06262736022472382,
+        "orthogonality": 0.08187955617904663,
+        "prediction": 0.03509145230054855,
+        "sigreg": 4.6883864402771,
+        "step": 900.0
+      },
+      {
+        "encoder_variance": 0.0,
+        "factor_activity": 0.0,
+        "loss": 0.05497215315699577,
+        "orthogonality": 0.09824921190738678,
+        "prediction": 0.034676678478717804,
+        "sigreg": 3.0766024589538574,
+        "step": 1000.0
+      }
+    ]
+  },
+  "recipe_sha256": "af7208e49c9ad9eda3549d730487cdf9402dae7fdef7f2cbca5cb46ae0dd8d1e",
+  "results": [
+    {
+      "basis_gram_rmse": 0.013618531016511434,
+      "current_state_probe_r2": 0.737288097095113,
+      "effective_rank": 3.011230043511664,
+      "min_coordinate_std": 0.7536555139144256,
+      "rollout_r2_h1": 0.7202678179513557,
+      "rollout_r2_h2": 0.6898974138557066,
+      "rollout_r2_h4": 0.6098814732766915,
+      "rollout_r2_h8": 0.471812710838838,
+      "seed": 0,
+      "state_roundtrip_rmse": 2.0807836165204208e-07,
+      "train_seconds": 2.8104856670252047,
+      "trainable_parameters": 12012,
+      "variant": "original"
+    },
+    {
+      "basis_gram_rmse": 0.01019715116616307,
+      "current_state_probe_r2": 0.7668988965911185,
+      "effective_rank": 3.23633510008033,
+      "min_coordinate_std": 0.5355925002962175,
+      "rollout_r2_h1": 0.7848636024898686,
+      "rollout_r2_h2": 0.769740621964984,
+      "rollout_r2_h4": 0.6895833967091468,
+      "rollout_r2_h8": 0.518303302957215,
+      "seed": 1,
+      "state_roundtrip_rmse": 1.4599834230466513e-07,
+      "train_seconds": 2.7624932089820504,
+      "trainable_parameters": 12012,
+      "variant": "original"
+    },
+    {
+      "basis_gram_rmse": 0.007712994976050285,
+      "current_state_probe_r2": 0.7257731576291546,
+      "effective_rank": 3.0678648415471366,
+      "min_coordinate_std": 0.5637971234281131,
+      "rollout_r2_h1": 0.7168245505919233,
+      "rollout_r2_h2": 0.6987211952861505,
+      "rollout_r2_h4": 0.6366402726264078,
+      "rollout_r2_h8": 0.4988146146945943,
+      "seed": 2,
+      "state_roundtrip_rmse": 1.845193224880859e-07,
+      "train_seconds": 2.627523666014895,
+      "trainable_parameters": 12012,
+      "variant": "original"
+    },
+    {
+      "basis_gram_rmse": 0.11878172816584683,
+      "current_state_probe_r2": 0.9008688043967172,
+      "effective_rank": 2.957845190961026,
+      "min_coordinate_std": 1.1913365383397905,
+      "rollout_r2_h1": 0.9067006743831403,
+      "rollout_r2_h2": 0.9065071203124289,
+      "rollout_r2_h4": 0.889261564579099,
+      "rollout_r2_h8": 0.8036119749522426,
+      "seed": 0,
+      "state_roundtrip_rmse": 5.80923767756758e-07,
+      "train_seconds": 10.864062165957876,
+      "trainable_parameters": 12012,
+      "variant": "original-plus-sigreg"
+    },
+    {
+      "basis_gram_rmse": 0.0905566066899444,
+      "current_state_probe_r2": 0.80612435152028,
+      "effective_rank": 2.8926937145897997,
+      "min_coordinate_std": 0.9800225144577022,
+      "rollout_r2_h1": 0.8625387165184235,
+      "rollout_r2_h2": 0.8915900406943311,
+      "rollout_r2_h4": 0.8969672563617539,
+      "rollout_r2_h8": 0.848319803271732,
+      "seed": 1,
+      "state_roundtrip_rmse": 3.561363257631456e-07,
+      "train_seconds": 10.525539457972627,
+      "trainable_parameters": 12012,
+      "variant": "original-plus-sigreg"
+    },
+    {
+      "basis_gram_rmse": 0.084967031431277,
+      "current_state_probe_r2": 0.8655840834597163,
+      "effective_rank": 2.5957841249662406,
+      "min_coordinate_std": 0.9316988407792293,
+      "rollout_r2_h1": 0.8699343549469335,
+      "rollout_r2_h2": 0.8622545694993136,
+      "rollout_r2_h4": 0.8067914786880866,
+      "rollout_r2_h8": 0.5394185391411429,
+      "seed": 2,
+      "state_roundtrip_rmse": 2.8058721568413603e-07,
+      "train_seconds": 9.96835545898648,
+      "trainable_parameters": 12012,
+      "variant": "original-plus-sigreg"
+    },
+    {
+      "basis_gram_rmse": 0.11878172816584683,
+      "current_state_probe_r2": 0.9008688043967172,
+      "effective_rank": 2.957845190961026,
+      "min_coordinate_std": 1.1913365383397905,
+      "rollout_r2_h1": 0.9067006743831403,
+      "rollout_r2_h2": 0.9065071203124289,
+      "rollout_r2_h4": 0.889261564579099,
+      "rollout_r2_h8": 0.8036119749522426,
+      "seed": 0,
+      "state_roundtrip_rmse": 5.80923767756758e-07,
+      "train_seconds": 10.242574582982343,
+      "trainable_parameters": 12012,
+      "variant": "sigreg-replaces-floors"
+    },
+    {
+      "basis_gram_rmse": 0.0905566066899444,
+      "current_state_probe_r2": 0.80612435152028,
+      "effective_rank": 2.8926937145897997,
+      "min_coordinate_std": 0.9800225144577022,
+      "rollout_r2_h1": 0.8625387165184235,
+      "rollout_r2_h2": 0.8915900406943311,
+      "rollout_r2_h4": 0.8969672563617539,
+      "rollout_r2_h8": 0.848319803271732,
+      "seed": 1,
+      "state_roundtrip_rmse": 3.561363257631456e-07,
+      "train_seconds": 10.55288037500577,
+      "trainable_parameters": 12012,
+      "variant": "sigreg-replaces-floors"
+    },
+    {
+      "basis_gram_rmse": 0.084967031431277,
+      "current_state_probe_r2": 0.8655840834597163,
+      "effective_rank": 2.5957841249662406,
+      "min_coordinate_std": 0.9316988407792293,
+      "rollout_r2_h1": 0.8699343549469335,
+      "rollout_r2_h2": 0.8622545694993136,
+      "rollout_r2_h4": 0.8067914786880866,
+      "rollout_r2_h8": 0.5394185391411429,
+      "seed": 2,
+      "state_roundtrip_rmse": 2.8058721568413603e-07,
+      "train_seconds": 10.313665834022686,
+      "trainable_parameters": 12012,
+      "variant": "sigreg-replaces-floors"
+    }
+  ],
+  "split": {
+    "test_ids": [
+      20,
+      23
+    ],
+    "train_ids": [
+      0,
+      15
+    ],
+    "unit": "trajectory_id",
+    "validation_ids": [
+      16,
+      19
+    ]
+  }
+}
