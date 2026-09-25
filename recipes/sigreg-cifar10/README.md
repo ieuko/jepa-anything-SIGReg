@@ -55,6 +55,8 @@ same encoder, augmentations, 32 epochs, three seeds, and fixed ridge probe,
 and compares against random, prediction-only, and variance-floor controls.
 The `--dataset cifar100` option downloads the publisher's binary archive,
 verifies its published MD5, and uses the fine labels only for the linear probe.
+The completed [CIFAR-100 report](../../results/runpod-cifar100-2026-09-25/REPORT.md)
+includes all seed-level results and the paired comparisons.
 
 ```bash
 PYTHONPATH=jepa-anything-core/src python3 recipes/sigreg-cifar10/train.py \

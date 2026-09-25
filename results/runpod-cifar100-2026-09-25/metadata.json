@@ -1,0 +1,37 @@
+{
+  "date_utc": "2026-09-25",
+  "protocol_and_code_commit": "5fad72b3a32c97b0649f2cfaa17e46934f23b2a4",
+  "dataset_publisher_url": "https://cave.cs.toronto.edu/kriz/cifar.html",
+  "runpod": {
+    "cli_version": "2.14.0-dd55bcf",
+    "gpu": "NVIDIA RTX PRO 4000 Blackwell",
+    "cloud_type": "SECURE",
+    "data_center": "EU-RO-1",
+    "price_per_hour_usd": 0.57,
+    "balance_before_usd": 45.5188998662,
+    "balance_after_usd": 45.4076659551,
+    "balance_change_usd": 0.1112339111,
+    "post_run_spend_per_hour_usd": 0,
+    "pod_deleted": true
+  },
+  "dataset": {
+    "name": "CIFAR-100 binary",
+    "download_url": "https://data.brainchip.com/dataset-mirror/cifar100/cifar-100-binary.tar.gz",
+    "publisher_md5": "03b5dce01913d631647c71ecec9e9cb8",
+    "train_images": 50000,
+    "test_images": 10000,
+    "probe_labels": "100 fine classes"
+  },
+  "experiment": {
+    "epochs": 32,
+    "state_dim": 64,
+    "num_factors": 8,
+    "sigreg_slices": 128,
+    "batch_size": 256,
+    "seeds": [0, 1, 2],
+    "variants": ["random", "prediction-only", "variance", "sigreg"],
+    "variance_weight": 4.0,
+    "sigreg_weight": 0.05,
+    "total_runs": 12
+  }
+}

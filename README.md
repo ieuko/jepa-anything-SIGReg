@@ -43,6 +43,8 @@ The 54-run weight and non-Gaussian robustness sweep is in
 [`results/runpod-followup-2026-09-25`](results/runpod-followup-2026-09-25/REPORT.md).
 The real-image CIFAR-10 transfer experiment is in
 [`results/runpod-cifar10-2026-09-25`](results/runpod-cifar10-2026-09-25/REPORT.md).
+The fixed-weight CIFAR-100 follow-up is in
+[`results/runpod-cifar100-2026-09-25`](results/runpod-cifar100-2026-09-25/REPORT.md).
 
 ## Quick start
 
