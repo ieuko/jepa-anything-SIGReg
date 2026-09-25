@@ -7,7 +7,8 @@ encoder and target share weights, as in the synthetic mechanism experiments.
 No class labels enter the representation-learning loss.
 
 The official CIFAR-10 binary archive is downloaded from the dataset author's
-site and checked against its published MD5 before parsing. The 50,000 official
+site (or an HTTPS mirror) and checked against its published MD5 before parsing.
+The 50,000 official
 training images are used for self-supervised training and for fitting a frozen
 linear probe. Probe accuracy is measured on the separate 10,000-image test
 split. The probe is ridge-regularized least squares on standardized features;
@@ -24,6 +25,7 @@ Four variants share the same architecture and seeds:
 ```bash
 PYTHONPATH=jepa-anything-core/src python3 recipes/sigreg-cifar10/train.py \
   --device cuda --data-dir /workspace/datasets \
+  --download-url https://data.brainchip.com/dataset-mirror/cifar10/cifar-10-binary.tar.gz \
   --output-dir results/runpod-cifar10-2026-09-25
 ```
 

@@ -49,12 +49,12 @@ def file_md5(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_cifar(data_dir: Path) -> tuple[Tensor, Tensor, Tensor, Tensor]:
+def load_cifar(data_dir: Path, download_url: str) -> tuple[Tensor, Tensor, Tensor, Tensor]:
     data_dir.mkdir(parents=True, exist_ok=True)
     archive = data_dir / "cifar-10-binary.tar.gz"
     if not archive.exists() or file_md5(archive) != MD5:
         temporary = data_dir / "cifar-10-binary.part"
-        with urllib.request.urlopen(URL, timeout=120) as response, temporary.open("wb") as dest:
+        with urllib.request.urlopen(download_url, timeout=120) as response, temporary.open("wb") as dest:
             for chunk in iter(lambda: response.read(1 << 20), b""):
                 dest.write(chunk)
         if file_md5(temporary) != MD5:
@@ -220,6 +220,7 @@ def run(
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=Path("/workspace/datasets"))
+    parser.add_argument("--download-url", default=URL)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--variants", default=",".join(VARIANTS))
@@ -255,7 +256,7 @@ def main() -> None:
         test_y = torch.randint(0, 10, (32,), generator=generator)
         checksum = "synthetic-smoke"
     else:
-        train_x, train_y, test_x, test_y = load_cifar(args.data_dir)
+        train_x, train_y, test_x, test_y = load_cifar(args.data_dir, args.download_url)
         checksum = MD5
     train_x = train_x.to(device)
     test_x = test_x.to(device)
@@ -274,7 +275,7 @@ def main() -> None:
             for key, value in vars(args).items()
         },
         "dataset": {
-            "url": URL if not args.smoke_data else None,
+            "url": args.download_url if not args.smoke_data else None,
             "archive_md5": checksum,
             "train_count": len(train_x),
             "test_count": len(test_x),
