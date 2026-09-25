@@ -278,15 +278,9 @@ def main() -> None:
         checksum = MD5
     train_x = train_x.to(device)
     test_x = test_x.to(device)
-    results = []
-    histories = {}
-    for variant in variants:
-        for seed in seeds:
-            result, history = run(variant, seed, train_x, train_y, test_x, test_y, args)
-            results.append(result)
-            histories[f"{variant}/seed-{seed}"] = history
-            print(json.dumps(result, sort_keys=True), flush=True)
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    results: list[dict[str, float | str | int]] = []
+    histories: dict[str, list[dict[str, float]]] = {}
     payload = {
         "configuration": {
             key: str(value) if isinstance(value, Path) else value
@@ -310,7 +304,17 @@ def main() -> None:
         "history": histories,
     }
     output = args.output_dir / "results.json"
-    output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    for variant in variants:
+        for seed in seeds:
+            result, history = run(variant, seed, train_x, train_y, test_x, test_y, args)
+            results.append(result)
+            histories[f"{variant}/seed-{seed}"] = history
+            temporary = output.with_suffix(".part")
+            temporary.write_text(
+                json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            )
+            temporary.replace(output)
+            print(json.dumps(result, sort_keys=True), flush=True)
     print(f"WROTE {output}", flush=True)
 
 
