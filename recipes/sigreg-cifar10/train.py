@@ -1,4 +1,4 @@
-"""JEPA-style CIFAR-10 test of SIGReg and coordinate variance floors."""
+"""JEPA-style CIFAR-10/100 test of SIGReg and coordinate variance floors."""
 
 from __future__ import annotations
 
@@ -10,6 +10,7 @@ import tarfile
 import time
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -23,9 +24,35 @@ from jepa_anything_core import (
 )
 from torch import Tensor, nn
 
-URL = "https://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz"
-MD5 = "c32a1d4ab5d03f1284b67883e8d87530"
-ARCHIVE_BYTES = 170052171
+
+@dataclass(frozen=True)
+class DatasetSpec:
+    url: str
+    md5: str
+    archive_bytes: int
+    archive_name: str
+    prefix: str
+    train_batches: tuple[tuple[str, int], ...]
+    test_batches: tuple[tuple[str, int], ...]
+    label_index: int
+    num_classes: int
+
+
+DATASETS = {
+    "cifar10": DatasetSpec(
+        "https://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz",
+        "c32a1d4ab5d03f1284b67883e8d87530", 170052171,
+        "cifar-10-binary.tar.gz", "cifar-10-batches-bin",
+        tuple((f"data_batch_{i}.bin", 10000) for i in range(1, 6)),
+        (("test_batch.bin", 10000),), 0, 10,
+    ),
+    "cifar100": DatasetSpec(
+        "https://www.cs.toronto.edu/~kriz/cifar-100-binary.tar.gz",
+        "03b5dce01913d631647c71ecec9e9cb8", 168513733,
+        "cifar-100-binary.tar.gz", "cifar-100-binary",
+        (("train.bin", 50000),), (("test.bin", 10000),), 1, 100,
+    ),
+}
 VARIANTS = ("random", "prediction-only", "variance", "sigreg")
 
 
@@ -51,14 +78,28 @@ def file_md5(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_cifar(data_dir: Path, download_url: str) -> tuple[Tensor, Tensor, Tensor, Tensor]:
+def parse_batch(raw: bytes, count: int, spec: DatasetSpec) -> tuple[Tensor, Tensor]:
+    record_bytes = 3072 + spec.label_index + 1
+    if len(raw) != count * record_bytes:
+        raise RuntimeError(f"invalid CIFAR batch: expected {count * record_bytes} bytes")
+    records = np.frombuffer(raw, dtype=np.uint8).reshape(count, record_bytes)
+    labels = torch.from_numpy(records[:, spec.label_index].copy()).long()
+    images = torch.from_numpy(records[:, -3072:].copy().reshape(count, 3, 32, 32))
+    if (labels >= spec.num_classes).any():
+        raise RuntimeError("CIFAR label out of range")
+    return images, labels
+
+
+def load_cifar(
+    data_dir: Path, download_url: str, spec: DatasetSpec,
+) -> tuple[Tensor, Tensor, Tensor, Tensor]:
     data_dir.mkdir(parents=True, exist_ok=True)
-    archive = data_dir / "cifar-10-binary.tar.gz"
-    if not archive.exists() or file_md5(archive) != MD5:
-        temporary = data_dir / "cifar-10-binary.part"
+    archive = data_dir / spec.archive_name
+    if not archive.exists() or file_md5(archive) != spec.md5:
+        temporary = archive.with_suffix(".part")
         for attempt in range(12):
             offset = temporary.stat().st_size if temporary.exists() else 0
-            if offset == ARCHIVE_BYTES:
+            if offset == spec.archive_bytes:
                 break
             headers = {"Range": f"bytes={offset}-"} if offset else {}
             request = urllib.request.Request(download_url, headers=headers)
@@ -73,30 +114,29 @@ def load_cifar(data_dir: Path, download_url: str) -> tuple[Tensor, Tensor, Tenso
             except (OSError, urllib.error.URLError) as error:
                 print(f"download retry {attempt + 1}: {error}", flush=True)
                 time.sleep(2)
-        if not temporary.exists() or temporary.stat().st_size != ARCHIVE_BYTES:
-            raise RuntimeError("CIFAR-10 download did not complete after retries")
-        if file_md5(temporary) != MD5:
-            raise RuntimeError("CIFAR-10 archive checksum mismatch")
+        if not temporary.exists() or temporary.stat().st_size != spec.archive_bytes:
+            raise RuntimeError("CIFAR download did not complete after retries")
+        if file_md5(temporary) != spec.md5:
+            raise RuntimeError("CIFAR archive checksum mismatch")
         temporary.replace(archive)
 
-    def split(bundle: tarfile.TarFile, names: list[str]) -> tuple[Tensor, Tensor]:
-        images: list[np.ndarray] = []
-        labels: list[np.ndarray] = []
-        for name in names:
-            stream = bundle.extractfile(f"cifar-10-batches-bin/{name}")
+    def split(
+        bundle: tarfile.TarFile, batches: tuple[tuple[str, int], ...],
+    ) -> tuple[Tensor, Tensor]:
+        images: list[Tensor] = []
+        labels: list[Tensor] = []
+        for name, count in batches:
+            stream = bundle.extractfile(f"{spec.prefix}/{name}")
             if stream is None:
-                raise RuntimeError(f"missing CIFAR-10 batch {name}")
-            raw = stream.read()
-            if len(raw) != 10000 * 3073:
-                raise RuntimeError(f"invalid CIFAR-10 batch {name}")
-            records = np.frombuffer(raw, dtype=np.uint8).reshape(10000, 3073)
-            labels.append(records[:, 0].copy())
-            images.append(records[:, 1:].copy().reshape(10000, 3, 32, 32))
-        return torch.from_numpy(np.concatenate(images)), torch.from_numpy(np.concatenate(labels)).long()
+                raise RuntimeError(f"missing CIFAR batch {name}")
+            batch_images, batch_labels = parse_batch(stream.read(), count, spec)
+            images.append(batch_images)
+            labels.append(batch_labels)
+        return torch.cat(images), torch.cat(labels)
 
     with tarfile.open(archive, "r:gz") as bundle:
-        train_x, train_y = split(bundle, [f"data_batch_{i}.bin" for i in range(1, 6)])
-        test_x, test_y = split(bundle, ["test_batch.bin"])
+        train_x, train_y = split(bundle, spec.train_batches)
+        test_x, test_y = split(bundle, spec.test_batches)
     return train_x, train_y, test_x, test_y
 
 
@@ -132,13 +172,15 @@ def features(encoder: nn.Module, images: Tensor, batch_size: int) -> Tensor:
         ])
 
 
-def probe_accuracy(train: Tensor, train_y: Tensor, test: Tensor, test_y: Tensor) -> float:
+def probe_accuracy(
+    train: Tensor, train_y: Tensor, test: Tensor, test_y: Tensor, num_classes: int,
+) -> float:
     train = train.double()
     mean = train.mean(dim=0)
     scale = train.std(dim=0).clamp_min(1e-4)
     x = (train - mean) / scale
     z = (test.double() - mean) / scale
-    labels = F.one_hot(train_y, num_classes=10).double()
+    labels = F.one_hot(train_y, num_classes=num_classes).double()
     prior = labels.mean(dim=0)
     ridge = 1e-3 * len(train_y)
     coefficients = torch.linalg.solve(
@@ -227,7 +269,7 @@ def run(
     result: dict[str, float | str | int] = {
         "variant": variant, "seed": seed,
         "linear_probe_accuracy": probe_accuracy(
-            train_features, train_y.cpu(), test_features, test_y.cpu()
+            train_features, train_y.cpu(), test_features, test_y.cpu(), args.num_classes
         ),
         "train_seconds": elapsed,
         **geometry(test_features),
@@ -237,8 +279,9 @@ def run(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset", choices=tuple(DATASETS), default="cifar10")
     parser.add_argument("--data-dir", type=Path, default=Path("/workspace/datasets"))
-    parser.add_argument("--download-url", default=URL)
+    parser.add_argument("--download-url")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--device", default="auto")
     parser.add_argument("--variants", default=",".join(VARIANTS))
@@ -254,6 +297,10 @@ def main() -> None:
     parser.add_argument("--sigreg-weight", type=float, default=0.005)
     parser.add_argument("--smoke-data", action="store_true")
     args = parser.parse_args()
+    spec = DATASETS[args.dataset]
+    args.num_classes = spec.num_classes
+    if args.download_url is None:
+        args.download_url = spec.url
     variants = [value.strip() for value in args.variants.split(",")]
     seeds = [int(value) for value in args.seeds.split(",")]
     if not variants or any(value not in VARIANTS for value in variants):
@@ -269,13 +316,13 @@ def main() -> None:
     if args.smoke_data:
         generator = torch.Generator().manual_seed(123)
         train_x = torch.randint(0, 256, (64, 3, 32, 32), generator=generator, dtype=torch.uint8)
-        train_y = torch.randint(0, 10, (64,), generator=generator)
+        train_y = torch.randint(0, spec.num_classes, (64,), generator=generator)
         test_x = torch.randint(0, 256, (32, 3, 32, 32), generator=generator, dtype=torch.uint8)
-        test_y = torch.randint(0, 10, (32,), generator=generator)
+        test_y = torch.randint(0, spec.num_classes, (32,), generator=generator)
         checksum = "synthetic-smoke"
     else:
-        train_x, train_y, test_x, test_y = load_cifar(args.data_dir, args.download_url)
-        checksum = MD5
+        train_x, train_y, test_x, test_y = load_cifar(args.data_dir, args.download_url, spec)
+        checksum = spec.md5
     train_x = train_x.to(device)
     test_x = test_x.to(device)
     args.output_dir.mkdir(parents=True, exist_ok=True)

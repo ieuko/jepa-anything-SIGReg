@@ -1,4 +1,4 @@
-# CIFAR-10 SIGReg transfer experiment
+# CIFAR-10/100 SIGReg transfer experiments
 
 This recipe tests the earlier synthetic-dynamics weight choice on real images.
 The encoder receives two independently augmented views of the same CIFAR-10
@@ -46,3 +46,19 @@ python recipes/sigreg-cifar10/plot.py \
 
 The sweep is exploratory because test-set probe scores were inspected while
 extending it.
+
+## Fixed-weight CIFAR-100 transfer check
+
+The follow-up [protocol](CIFAR100_PROTOCOL.md) freezes the CIFAR-10-selected
+SIGReg weight at `0.05` before inspecting any CIFAR-100 results. It keeps the
+same encoder, augmentations, 32 epochs, three seeds, and fixed ridge probe,
+and compares against random, prediction-only, and variance-floor controls.
+The `--dataset cifar100` option downloads the publisher's binary archive,
+verifies its published MD5, and uses the fine labels only for the linear probe.
+
+```bash
+PYTHONPATH=jepa-anything-core/src python3 recipes/sigreg-cifar10/train.py \
+  --dataset cifar100 --device cuda --epochs 32 \
+  --sigreg-weight 0.05 --variants random,prediction-only,variance,sigreg \
+  --seeds 0,1,2 --output-dir results/runpod-cifar100-2026-09-25
+```
