@@ -123,7 +123,10 @@ def load_data(
     device: torch.device,
 ) -> tuple[dict[str, dict[str, Tensor]], dict[str, Any]]:
     archive = _archive(data_dir, download_url)
-    with zipfile.ZipFile(archive) as bundle:
+    # UCI distributes an outer archive containing the original dataset ZIP.
+    with zipfile.ZipFile(archive) as outer:
+        inner_bytes = outer.read("UCI HAR Dataset.zip")
+    with zipfile.ZipFile(io.BytesIO(inner_bytes)) as bundle:
         train_x, train_y, train_subjects = _read_split(bundle, "train")
         test_x, test_y, test_subjects = _read_split(bundle, "test")
     train_subject_ids = sorted(int(value) for value in train_subjects.unique())
@@ -149,6 +152,7 @@ def load_data(
         raise RuntimeError("empty UCI HAR partition")
     metadata: dict[str, Any] = {
         "archive_sha256": _sha256(archive),
+        "inner_archive_sha256": hashlib.sha256(inner_bytes).hexdigest(),
         "archive_bytes": archive.stat().st_size,
         "download_url": download_url,
         "train_subject_ids": [
