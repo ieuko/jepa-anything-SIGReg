@@ -56,6 +56,10 @@ there. The complementary, exploratory CIFAR-100 image comparison is in
 [`results/opf-cifar100-floor-2026-09-26`](results/opf-cifar100-floor-2026-09-26/REPORT.md):
 its floors activated sparsely, but fixed-weight SIGReg underperformed the
 original OPF objective.
+The preregistered [low-weight CIFAR-100 validation screen](results/opf-lowweight-screen-2026-09-26/SELECTION.md)
+selected 0.0001 without test scores; its frozen
+[SVHN transfer test](results/opf-svhn-transfer-2026-09-26/REPORT.md)
+found no mean downstream gain over original OPF, despite higher feature rank.
 
 ## Quick start
 
